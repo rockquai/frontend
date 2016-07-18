@@ -16,26 +16,26 @@ h1, h2, h3, h4, h5, h6, p{
 
 .warp {
 	position: relative;
-	height: 71px;
+	height: 4.4375rem;
 	background: #f5f5f5;
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 0.0625rem solid #e5e5e5;
 }
 .warp::after {
 	position: absolute;
-	top: 72px;
+	top: 4.5rem;
 	left: 0;
 	width: 100%;
 	display: block;
 	content: '';
-	border-bottom: 1px solid #d7d7d7;
+	border-bottom: 0.0625rem solid #d7d7d7;
 	z-index: 10;
 }
 
 .fds-header {
-	max-width: 980px;
+	max-width: 61.25rem;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 21px;
+	padding-top: 1.3125rem;
 }
 
 .fds-header .guide {
@@ -44,18 +44,18 @@ h1, h2, h3, h4, h5, h6, p{
 
 .guide .guide-title {
 	float: left;
-	padding: 7px 12px;
-	margin-top: 7px;
-	font-size: 12px;
+	padding: 0.5834em 1em;
+	margin-top: 0.5834em;
+	font-size: 0.75rem;
 	background: #ff1a9c;
-	border-radius: 2px;
+	border-radius: 0.125rem;
 	color: #fff;
 }
 
 .guide .guide-gnb {
 	position: relative;
 	float: left;
-	margin-top: 12px;
+	margin-top: 0.75rem;
 }
 
 .guide-gnb li {
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .guide-gnb a {
-	padding-left: 20px;
+	padding-left: 1.25rem;
 	color: #333;
 }
 
@@ -71,23 +71,21 @@ h1, h2, h3, h4, h5, h6, p{
 /* 오른쪽 */
 .fds-header .menu {
 	float: right;
-	margin-top: 12px;
+	margin-top: 0.75rem;
 }
 
 .menu abbr {
 	text-decoration: none;
 	color: #333;
-	padding-left: 20px;
+	padding-left: 1.25rem;
 }
-
-
 
 /* main */
 .fds-main {
-	width: 980px;
+	width: 61.25rem;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 44px;
+	margin-top: 2.75rem;
 }
 
 .profile, .title {
@@ -95,38 +93,21 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .profile img {
-	border-radius: 10px;
+	border-radius: 0.625rem;
 	background: #ff1a9c;
 }
 
-.profile span {
-	display: block;
-	font-size: 35px;
-	text-align: center;
-	-moz-text-align-last: justify;
-	text-align-last: justify;
-	font-weight: 900;
-	color: #fff;
-}
-
-/*.profile::before {
-	display: block;
-	content: '';
-	background: url(../images/crown.svg) no-repeat;
-}*/
-
-
 .profile span:first-child {
-	width: 50px;
+	width: 3.125rem;
 }
 
 .profile span:last-child {
-	width: 50px;
+	width: 3.125rem;
 }
 
 .title {
-	margin-left: 27px;
-	margin-top: 34px;
+	margin-left: 1.6875rem;
+	margin-top: 2.125rem;
 }
 
 .title h2 {
@@ -142,20 +123,20 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .title strong {
-	font-size: 16px;
+	font-size: 1rem;
 }
 
 .title em {
-	font-size: 14px;
+	font-size: 0.875rem;
 }
 
 .title .information {
-	margin-top: 76px;
+	margin-top: 4.75rem;
 }
 
 .information li {
 	float: left;
-	margin-right: 30px;
+	margin-right: 1.875rem;
 }
 
 .information svg {
@@ -165,26 +146,19 @@ h1, h2, h3, h4, h5, h6, p{
 .information a {
 	display: block;
 	float: left;
-	font-size: 14px;
+	font-size: 0.875rem;
 	color: #888;
-	margin-top: -2px;
-	margin-left: 10px;
+	margin-top: -0.125rem;
+	margin-left: 0.625rem;
 }
 
 /* 탭메뉴 */
 .task-list {
-	margin-top: 60px;
+	margin-top: 3.75rem;
 }
 
-/*.task-list::after {
-	display: block;
-	content: '';
-	padding-top: 20px;
-	border-bottom: 1px solid #e5e5e5;
-}*/
-
 .tab-list {
-	margin-left: 60px;
+	margin-left: 3.75rem;
 }
 
 .tab-list li {
@@ -205,44 +179,44 @@ h1, h2, h3, h4, h5, h6, p{
 .tab-list .task-list-html a:hover::before, 
 .tab-list .task-list-html a:focus::before {
 	position: absolute;
-	top: 45px;
-	left: -60px;
+	top: 2.8125rem;
+	left: -3.75rem;
 	display: block;
 	content: '';
-	width: 300px;
-	border-bottom: 1px solid #ec3aad;
+	width: 18.75rem;
+	border-bottom: 0.0625rem solid #ec3aad;
 }
 
 .tab-list .task-list-sass {
-	margin-left: 219px;
+	margin-left: 179px;
 }
 
 .tab-list .task-list-sass a.active::after,
 .tab-list .task-list-sass a:hover::before, 
 .tab-list .task-list-sass a:focus::before {
 	position: absolute;
-	top: 45px;
-	left: -105px;
+	top: 2.8125rem;
+	left: -5.375rem;
 	display: block;
 	content: '';
-	width: 300px;
-	border-bottom: 1px solid #ec3aad;
+	width: 18.75rem;
+	border-bottom: 0.0625rem solid #ec3aad;
 }
 
 .tab-list .task-list-js {
-	margin-left: 160px;
+	margin-left: 10.625rem;
 }
 
 .tab-list .task-list-js a.active::after,
 .tab-list .task-list-js a:hover::before, 
 .tab-list .task-list-js a:focus::before {
 	position: absolute;
-	top: 45px;
-	left: -50px;
+	top: 2.8125rem;
+	left: -2.875rem;
 	display: block;
 	content: '';
-	width: 300px;
-	border-bottom: 1px solid #ec3aad;
+	width: 18.75rem;
+	border-bottom: 0.0625rem solid #ec3aad;
 }
 
 .tab-list img, .tab-list a{
@@ -255,8 +229,8 @@ h1, h2, h3, h4, h5, h6, p{
 
 .tab-list a {
 	display: block;
-	margin-top: -2px;
-	font-size: 26px;
+	margin-top: -0.125rem;
+	font-size: 1.625rem;
 	font-weight: 400;
 	color: #333;
 }
@@ -265,8 +239,8 @@ h1, h2, h3, h4, h5, h6, p{
 /* html 리스트 */
 
 .html-css-list {
-	margin-top: 43px;
-	margin-left: 20px;
+	margin-top: 2.6875rem;
+	margin-left: 1.25rem;
 }
 
 .html-css-list .post-item {
@@ -277,89 +251,86 @@ h1, h2, h3, h4, h5, h6, p{
 .html-css-list .post-item-img {
 	box-sizing: border-box;
 	float: left;
-	border-radius: 150px;
-	margin-top: 12px;
+	border-radius: 9.375rem;
+	margin-top: 0.75rem;
 }
 
 .html-css-list .post-item-content {
 	box-sizing: border-box;
 	float: right;
 	width: 84%;
-	padding-left: 20px;
-	margin-top: 2px;
-	margin-bottom: 55px;
+	padding-left: 1.25rem;
+	margin-top: 0.125rem;
+	margin-bottom: 3.4375rem;
 }
 
 .html-css-list .post-item-title a{
-	font-size: 24px;
+	font-size: 1.5rem;
 	font-weight: 400;
 	color: #333;
 }
 
 .html-css-list .post-item-code {
-	width: 751px;
-	padding-top: 18px;
-	padding-bottom: 15px;
-	padding-left: 15px;
+	width: 46.9375rem;
+	padding-top: 1.125rem;
+	padding-bottom: 0.9375rem;
+	padding-left: 0.9375rem;
 	background: #f7f7f7;
-	margin-top: 12px;
+	margin-top: 0.75rem;
 }
 
 .html-css-list .post-item-code code {
-	font-size: 14px;
+	font-size: 0.875rem;
 	color: #333;
 }
 
 
 .html-css-list .post-item-point{
 	position: absolute;
-	right: 20px;
+	right: 1.25rem;
 	background: #ff1a9c;
-	border-radius: 10px;
+	border-radius: 0.625rem;
 }
 
 .html-css-list .post-item-point.code-custom-grid{
-	top: 7px;
+	top: 0.4375rem;
 }
 
 .html-css-list .post-item-point.code-grid{
-	top: 217px;
+	top: 13.5625rem;
 }
 
 .html-css-list .post-item-point.code-transition{
-	top: 427px;
+	top: 26.6875rem;
 }
 
 .html-css-list .post-item-point.code-position{
-	top: 617px;
+	top: 38.5625rem;
 }
 
 .html-css-list .post-item-point.code-typo{
-	top: 827px;
+	top: 51.6875rem;
 }
 
 .html-css-list .post-item-point.code-float{
-	top: 1037px;
+	top: 64.8125rem;
 }
 
 .html-css-list .post-item-point.code-box-shadow{
-	top: 1246px;
+	top: 77.875rem;
 }
 
 .html-css-list .post-item-point.code-selectors{
-	top: 1436px;
+	top: 89.75rem;
 }
 
 .html-css-list .post-item-point.code-attr{
-	top: 1645px;
+	top: 102.812rem;
 }
 
 .html-css-list .post-item-point span {
 	display: block;
-	font-size: 12px;
+	font-size: 0.75rem;
 	color: #fff;
-	padding: 2px 20px;
+	padding: 0.1667em 1.667em;
 }
-
-
-
