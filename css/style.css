@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6, p{
 	background: #f5f5f5;
 	border-bottom: 0.0625rem solid #e5e5e5;
 }
+
 .warp::after {
 	position: absolute;
 	top: 4.5rem;
@@ -36,6 +37,7 @@ h1, h2, h3, h4, h5, h6, p{
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 1.3125rem;
+	padding-bottom: 2.75rem;
 }
 
 .fds-header .guide {
@@ -63,21 +65,55 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .guide-gnb a {
-	padding-left: 1.25rem;
+	position: relative;
+	margin: 0 1.25rem;
 	color: #333;
 }
 
+.guide-gnb a:hover::after {
+	content: '';
+	width: 120%;
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	bottom: -19px;
+	transform: translateX(-50%);
+	border-bottom: 2px solid #ff1a9c;
+}
 
-/* 오른쪽 */
-.fds-header .menu {
+
+.fds-header .menu {	
 	float: right;
 	margin-top: 0.75rem;
 }
 
-.menu abbr {
+.fds-header .menu a {
+	position: relative;
+}
+
+.fds-header .menu abbr {
+	position: relative;
 	text-decoration: none;
 	color: #333;
 	padding-left: 1.25rem;
+}
+
+.fds-header .menu abbr.active::after,
+.fds-header .menu abbr:hover::after,
+.fds-header .menu abbr:focus::after{
+	position: absolute;
+	top: 0;
+	left: 0.75rem;
+	bottom: -121%;
+	width: 100%;
+	display: block;
+	content: '';
+	border-bottom: 0.125rem solid #ff1a9c;
+}
+
+.fds-header .menu abbr.active,
+.fds-header .menu abbr:hover {
+	color: #ff1a9c;
 }
 
 /* main */
@@ -85,7 +121,6 @@ h1, h2, h3, h4, h5, h6, p{
 	width: 61.25rem;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 2.75rem;
 }
 
 .profile, .title {
