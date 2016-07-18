@@ -93,6 +93,7 @@ h1, h2, h3, h4, h5, h6, p{
 
 .fds-header .menu abbr {
 	position: relative;
+	cursor: help;
 	text-decoration: none;
 	color: #333;
 	padding-left: 1.25rem;
@@ -272,7 +273,6 @@ h1, h2, h3, h4, h5, h6, p{
 
 
 /* html 리스트 */
-
 .html-css-list {
 	margin-top: 2.6875rem;
 	margin-left: 1.25rem;
@@ -369,3 +369,29 @@ h1, h2, h3, h4, h5, h6, p{
 	color: #fff;
 	padding: 0.1667em 1.667em;
 }
+
+::selection {
+  cursor: move;
+  background: #ff1a9c;  
+}
+
+::-moz-selection {
+  background: #ff1a9c;
+}
+
+
+/* 접근성 관점에서 링크의 주소를 출력하는 스타일 */
+@media print {
+  a::after {
+    content: '(' attr(href) ')';
+    color: #fc4a54;
+  }
+  
+  abbr::after {
+    content: '(' attr(title) ')';
+  }
+}
+
+
+
+
