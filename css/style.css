@@ -67,22 +67,6 @@ h1, h2, h3, h4, h5, h6, p{
 	color: #333;
 }
 
-/* hover */
-/*.guide-gnb a::after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	display: block;
-	content: '';
-	width: 100%;
-}
-
-.guide-gnb a:hover::after {
-	border-bottom: 2px solid #ff1a9c;
-	bottom: -100%;
-}*/
-
 
 /* 오른쪽 */
 .fds-header .menu {
@@ -110,9 +94,7 @@ h1, h2, h3, h4, h5, h6, p{
 	float: left;
 }
 
-.profile {
-	width: 230px;
-	height: 230px;
+.profile img {
 	border-radius: 10px;
 	background: #ff1a9c;
 }
@@ -336,22 +318,41 @@ h1, h2, h3, h4, h5, h6, p{
 	border-radius: 10px;
 }
 
-.html-css-list .post-item-point.code-attr{
+.html-css-list .post-item-point.code-custom-grid{
 	top: 7px;
 }
 
-.html-css-list .post-item-point.code-css{
+.html-css-list .post-item-point.code-grid{
 	top: 217px;
 }
 
-.html-css-list .post-item-point.code-box-shadow{
+.html-css-list .post-item-point.code-transition{
 	top: 427px;
 }
 
-.html-css-list .post-item-point.code-typo{
+.html-css-list .post-item-point.code-position{
 	top: 617px;
 }
 
+.html-css-list .post-item-point.code-typo{
+	top: 827px;
+}
+
+.html-css-list .post-item-point.code-float{
+	top: 1037px;
+}
+
+.html-css-list .post-item-point.code-box-shadow{
+	top: 1246px;
+}
+
+.html-css-list .post-item-point.code-selectors{
+	top: 1436px;
+}
+
+.html-css-list .post-item-point.code-attr{
+	top: 1645px;
+}
 
 .html-css-list .post-item-point span {
 	display: block;
