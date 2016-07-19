@@ -327,40 +327,44 @@ h1, h2, h3, h4, h5, h6, p{
 	border-radius: 0.625rem;
 }
 
-.html-css-list .post-item-point.code-custom-grid{
+.html-css-list .post-item-point.code-rwd{
 	top: 0.4375rem;
 }
 
-.html-css-list .post-item-point.code-grid{
+.html-css-list .post-item-point.code-custom-grid{
 	top: 13.5625rem;
 }
 
-.html-css-list .post-item-point.code-transition{
+.html-css-list .post-item-point.code-grid{
 	top: 26.6875rem;
 }
 
-.html-css-list .post-item-point.code-position{
+.html-css-list .post-item-point.code-transition{
 	top: 38.5625rem;
 }
 
-.html-css-list .post-item-point.code-typo{
+.html-css-list .post-item-point.code-position{
 	top: 51.6875rem;
 }
 
-.html-css-list .post-item-point.code-float{
+.html-css-list .post-item-point.code-typo{
 	top: 64.8125rem;
 }
 
-.html-css-list .post-item-point.code-box-shadow{
+.html-css-list .post-item-point.code-float{
 	top: 77.875rem;
 }
 
-.html-css-list .post-item-point.code-selectors{
+.html-css-list .post-item-point.code-box-shadow{
 	top: 89.75rem;
 }
 
-.html-css-list .post-item-point.code-attr{
+.html-css-list .post-item-point.code-selectors{
 	top: 102.812rem;
+}
+
+.html-css-list .post-item-point.code-attr{
+	top: 115.938rem;
 }
 
 .html-css-list .post-item-point span {
