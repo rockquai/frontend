@@ -376,11 +376,13 @@ h1, h2, h3, h4, h5, h6, p{
 
 ::selection {
   cursor: move;
-  background: #ff1a9c;  
+  background: #ff1a9c;
+  color: #fff;
 }
 
 ::-moz-selection {
   background: #ff1a9c;
+  color: #fff;
 }
 
 
