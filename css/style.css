@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .fds-header {
-	max-width: 61.25rem;
+	width: 61.25rem;
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 1.3125rem;
@@ -307,6 +307,7 @@ h1, h2, h3, h4, h5, h6, p{
 
 .html-css-list .post-item-code {
 	width: 46.9375rem;
+	height: 72px;
 	padding-top: 1.125rem;
 	padding-bottom: 0.9375rem;
 	padding-left: 0.9375rem;
