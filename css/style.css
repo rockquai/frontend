@@ -328,44 +328,48 @@ h1, h2, h3, h4, h5, h6, p{
 	border-radius: 0.625rem;
 }
 
-.html-css-list .post-item-point.code-rwd{
+.html-css-list .post-item-point.code-rwd-indulge{
 	top: 0.4375rem;
 }
 
-.html-css-list .post-item-point.code-custom-grid{
+.html-css-list .post-item-point.code-rwd{
 	top: 13.5625rem;
 }
 
-.html-css-list .post-item-point.code-grid{
+.html-css-list .post-item-point.code-custom-grid{
 	top: 26.6875rem;
 }
 
+.html-css-list .post-item-point.code-grid{
+	top: 39.875rem;
+}
+
 .html-css-list .post-item-point.code-transition{
-	top: 38.5625rem;
+	top: 53rem;
 }
 
 .html-css-list .post-item-point.code-position{
-	top: 51.6875rem;
+	top: 66.125rem;
 }
 
 .html-css-list .post-item-point.code-typo{
-	top: 64.8125rem;
+	top: 79.25rem;
 }
 
 .html-css-list .post-item-point.code-float{
-	top: 77.875rem;
+	top: 92.375rem;
 }
 
 .html-css-list .post-item-point.code-box-shadow{
-	top: 89.75rem;
+	top: 105.438rem;
 }
 
 .html-css-list .post-item-point.code-selectors{
-	top: 102.812rem;
+	top: 118.625rem;
 }
 
 .html-css-list .post-item-point.code-attr{
-	top: 115.938rem;
+	top: 131.75rem;
 }
 
 .html-css-list .post-item-point span {
