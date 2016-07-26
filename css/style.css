@@ -288,6 +288,7 @@ h1, h2, h3, h4, h5, h6, p{
 	float: left;
 	border-radius: 9.375rem;
 	margin-top: 0.75rem;
+	box-shadow: 10px 3px 10px hsla(0,0%,0%,.1);
 }
 
 .html-css-list .post-item-content {
