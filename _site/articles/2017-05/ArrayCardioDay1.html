@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Array Cardio Day 1</title>
+  <meta name="description" content="  Array.prototype.map()  Array.prototype.reduce()  Array.prototype.sort()  Array.prototype.filter()">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-05/ArrayCardioDay1">
+  <link rel="alternate" type="application/rss+xml" title="Claire" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories">categories</a>
+      </li>
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive">archive</a>
+      </li>
+      <!-- 원본  -->
+      <!--  
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+        -->
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Array Cardio Day 1">Array Cardio Day 1</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        4 MAY 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    6 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>Array.prototype.map()</li>
+  <li>Array.prototype.reduce()</li>
+  <li>Array.prototype.sort()</li>
+  <li>Array.prototype.filter()</li>
+</ul>
+
+<!--more-->
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">inventors</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Albert'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Einstein'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1879</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1955</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Isaac'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Newton'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1643</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1727</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Galileo'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Galilei'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1564</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1642</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Marie'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Curie'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1867</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1934</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Johannes'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Kepler'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1571</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1630</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Nicolaus'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Copernicus'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1473</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1543</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">first</span><span class="p">:</span> <span class="s1">'Max'</span><span class="p">,</span> <span class="na">last</span><span class="p">:</span> <span class="s1">'Planck'</span><span class="p">,</span> <span class="na">year</span><span class="p">:</span> <span class="mi">1858</span><span class="p">,</span> <span class="na">passed</span><span class="p">:</span> <span class="mi">1947</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kr">const</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Beck, Glenn'</span><span class="p">,</span> <span class="s1">'Becker, Carl'</span><span class="p">,</span> <span class="s1">'Beckett, Samuel'</span><span class="p">,</span> <span class="s1">'Beddoes, Mick'</span><span class="p">,</span> <span class="s1">'Beecher, Henry'</span><span class="p">,</span> <span class="s1">'Beethoven, Ludwig'</span><span class="p">,</span> <span class="s1">'Begin, Menachem'</span><span class="p">,</span> <span class="s1">'Belloc, Hilaire'</span><span class="p">,</span> <span class="s1">'Bellow, Saul'</span><span class="p">,</span> <span class="s1">'Benchley, Robert'</span><span class="p">,</span> <span class="s1">'Benenson, Peter'</span><span class="p">,</span> <span class="s1">'Ben-Gurion, David'</span><span class="p">,</span> <span class="s1">'Benjamin, Walter'</span><span class="p">,</span> <span class="s1">'Benn, Tony'</span><span class="p">,</span> <span class="s1">'Bennington, Chester'</span><span class="p">,</span> <span class="s1">'Benson, Leana'</span><span class="p">,</span> <span class="s1">'Bent, Silas'</span><span class="p">,</span> <span class="s1">'Bentsen, Lloyd'</span><span class="p">,</span> <span class="s1">'Berger, Ric'</span><span class="p">,</span> <span class="s1">'Bergman, Ingmar'</span><span class="p">,</span> <span class="s1">'Berio, Luciano'</span><span class="p">,</span> <span class="s1">'Berle, Milton'</span><span class="p">,</span> <span class="s1">'Berlin, Irving'</span><span class="p">,</span> <span class="s1">'Berne, Eric'</span><span class="p">,</span> <span class="s1">'Bernhard, Sandra'</span><span class="p">,</span> <span class="s1">'Berra, Yogi'</span><span class="p">,</span> <span class="s1">'Berry, Halle'</span><span class="p">,</span> <span class="s1">'Berry, Wendell'</span><span class="p">,</span> <span class="s1">'Bethea, Erin'</span><span class="p">,</span> <span class="s1">'Bevan, Aneurin'</span><span class="p">,</span> <span class="s1">'Bevel, Ken'</span><span class="p">,</span> <span class="s1">'Biden, Joseph'</span><span class="p">,</span> <span class="s1">'Bierce, Ambrose'</span><span class="p">,</span> <span class="s1">'Biko, Steve'</span><span class="p">,</span> <span class="s1">'Billings, Josh'</span><span class="p">,</span> <span class="s1">'Biondo, Frank'</span><span class="p">,</span> <span class="s1">'Birrell, Augustine'</span><span class="p">,</span> <span class="s1">'Black Elk'</span><span class="p">,</span> <span class="s1">'Blair, Robert'</span><span class="p">,</span> <span class="s1">'Blair, Tony'</span><span class="p">,</span> <span class="s1">'Blake, William'</span><span class="p">];</span>
+
+<span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'car'</span><span class="p">,</span> <span class="s1">'car'</span><span class="p">,</span> <span class="s1">'truck'</span><span class="p">,</span> <span class="s1">'truck'</span><span class="p">,</span> <span class="s1">'bike'</span><span class="p">,</span> <span class="s1">'walk'</span><span class="p">,</span> <span class="s1">'car'</span><span class="p">,</span> <span class="s1">'van'</span><span class="p">,</span> <span class="s1">'bike'</span><span class="p">,</span> <span class="s1">'walk'</span><span class="p">,</span> <span class="s1">'car'</span><span class="p">,</span> <span class="s1">'van'</span><span class="p">,</span> <span class="s1">'car'</span><span class="p">,</span> <span class="s1">'truck'</span><span class="p">];</span></code></pre></figure>
+
+<h3 id="arrayprototypefilter"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a></h3>
+<p>: <code class="highlighter-rouge">filter()</code> 메소드는 제공된 함수로 구현된 테스트를 통과하는 모든 요소가 있는 새로운 배열을 만든다. <br /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">new_array</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">callback</span><span class="p">[,</span> <span class="nx">thisArg</span><span class="p">]);</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">callback</code> : 배열의 각 요소를 테스트하는 함수. 인수 (element, index, array) 와 함께 호출됨. 요소를 (새 배열에) 계속 두기 위해 true를 반환, 그렇지 않으면 false.</li>
+  <li><code class="highlighter-rouge">thisArg</code> : 선택 사항. callback을 실행할 때 this로 사용하는 값.</li>
+  <li><code class="highlighter-rouge">반환값</code> : 새로운 배열 반환 (true를 반환, 그렇지 않으면 false)</li>
+</ul>
+
+<h4 id="filter-the-list-of-inventors-for-those-who-were-born-in-the-1500s">Filter the list of inventors for those who were born in the 1500’s</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">inventors_from_1500s</span> <span class="o">=</span> <span class="nx">inventors</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">inventor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">inventor</span><span class="p">.</span><span class="nx">year</span> <span class="o">&gt;=</span> <span class="mi">1500</span> <span class="o">&amp;&amp;</span> <span class="nx">inventor</span><span class="p">.</span><span class="nx">year</span> <span class="o">&lt;</span> <span class="mi">1600</span><span class="p">);</span></code></pre></figure>
+
+<hr />
+
+<h3 id="arrayprototypemap"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Array.prototype.map()</a></h3>
+<p>: <code class="highlighter-rouge">map() 메소드</code> 는 배열 내의 모든 요소 각각에 대하여  제공된 함수(callback)를 호출하고, 그 결과를 모아서, 새로운 배열을 반환. <br /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">callback</span><span class="p">[,</span> <span class="nx">thisArg</span><span class="p">]);</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">callback</code> : 새로운 배열 요소를 생성하는 함수로 다음 세 가지 인수를 가진다.</li>
+  <li><code class="highlighter-rouge">thisArg</code> : 선택항목. callback을 실행할 때 this로 사용되는 값. 기본값은 Window 객체.</li>
+  <li><code class="highlighter-rouge">반환값</code> : 새로운 배열을 반환.</li>
+</ul>
+
+<h4 id="give-us-an-array-of-the-inventors-first-and-last-names">Give us an array of the inventors first and last names</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">fullNames</span> <span class="o">=</span> <span class="nx">inventors</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">inventor</span> <span class="o">=&gt;</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">inventor</span><span class="p">.</span><span class="nx">first</span><span class="p">}</span> <span class="nx">$</span><span class="p">{</span><span class="nx">inventor</span><span class="p">.</span><span class="nx">last</span><span class="p">}</span><span class="err">`</span><span class="p">);</span></code></pre></figure>
+
+<hr />
+
+<h3 id="arrayprototypesort"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">Array.prototype.sort()</a></h3>
+<p>: <code class="highlighter-rouge">sort() 메소드</code> 배열의 요소를 적절한 위치에 정렬하고 배열을 반환.<br /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">arr</span><span class="p">.</span><span class="nx">sort</span><span class="p">()</span>
+<span class="nx">arr</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">compareFunction</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">compareFunction</code> (Optional) : 정렬 순서를 정의하는 함수를 지정. 생략하면 배열은 각 요소의 문자열 변환에 따라 각 문자의 유니 코드 코드 포인트 값에 따라 정렬.</li>
+  <li><code class="highlighter-rouge">반환값</code> : 소트 된 배열.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">alpha</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">lastOne</span><span class="p">,</span> <span class="nx">nextOne</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">aLast</span><span class="p">,</span> <span class="nx">aFirst</span><span class="p">]</span> <span class="o">=</span> <span class="nx">lastOne</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">', '</span><span class="p">);</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">bLast</span><span class="p">,</span> <span class="nx">bFirst</span><span class="p">]</span> <span class="o">=</span> <span class="nx">nextOne</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">', '</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">aLast</span> <span class="o">&gt;</span> <span class="nx">bLast</span> <span class="p">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure>
+
+<hr />
+
+<h3 id="arrayprototypereduce"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce">Array.prototype.reduce()</a></h3>
+<p>: <code class="highlighter-rouge">reduce() 메소드</code> 누산기(accumulator) 및 배열의 각 값(좌에서 우로)에 대해 (누산된) 한 값으로 줄도록 함수를 적용. <br /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="nx">callback</span><span class="p">[,</span> <span class="nx">initialValue</span><span class="p">])</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">callback</code> : 배열의 각 (요소) 값에 실행할 함수, 아래의 인수(argument) 4개
+    <ul>
+      <li><code class="highlighter-rouge">previousValue</code> : 이전 마지막 콜백 호출에서 반환된 값 또는 공급된 경우 initialValue. (아래 참조.)</li>
+      <li><code class="highlighter-rouge">currentValue</code> : 배열 내 현재 처리되고 있는 요소(element).</li>
+      <li><code class="highlighter-rouge">currentIndex</code> : 배열 내 현재 처리되고 있는 요소의 인덱스.</li>
+      <li><code class="highlighter-rouge">array</code> : reduce에 호출되는 배열. <br /></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">initialValue</code> : 선택사항. callback의 첫 호출에 첫 번째 인수로 사용하는 값.</li>
+</ul>
+
+<h4 id="sum-up-the-instances-of-each-of-these">Sum up the instances of each of these</h4>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">transportaion</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">obj</span><span class="p">[</span><span class="nx">item</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nx">obj</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">obj</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">},</span> <span class="p">{});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">transportaion</span><span class="p">);</span> <span class="c1">// {car: 5, truck: 3, bike: 2, walk: 2, van: 2}</span></code></pre></figure>
+
+<hr />
+
+<h3 id="arrayfrom"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></h3>
+<p>: <code class="highlighter-rouge">Array.from() 메소드</code>는 유사 배열 혹은 반복가능한 객체로부터 새 Array 인스턴스를 만든다.<br /></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">arrayLike</span><span class="p">[,</span> <span class="nx">mapFn</span><span class="p">[,</span> <span class="nx">thisArg</span><span class="p">]])</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">arrayLike</code> : 배열로 변환할 유사 배열 혹은 반복 가능한 객체.</li>
+  <li><code class="highlighter-rouge">mapFn</code> : 선택 사항. 배열 모든 요소에 호출 할 Map 함수.</li>
+  <li><code class="highlighter-rouge">thisArg</code> : 선택 사항. mapFn 실행 시에 this로 사용할 값.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">category</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'.mw-category'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">links</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">category</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'a'</span><span class="p">));</span>
+<span class="kr">const</span> <span class="nx">de</span> <span class="o">=</span> <span class="nx">links</span>
+                <span class="p">.</span><span class="nx">map</span><span class="p">(</span> <span class="nx">link</span> <span class="o">=&gt;</span> <span class="nx">link</span><span class="p">.</span><span class="nx">textContent</span> <span class="p">)</span>
+                <span class="p">.</span><span class="nx">filter</span><span class="p">(</span> <span class="nx">streetName</span> <span class="o">=&gt;</span> <span class="nx">streetName</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">'de'</span><span class="p">)</span> <span class="p">);</span></code></pre></figure>
+
+<h3 id="code">code</h3>
+<ul>
+  <li><a href="https://github.com/rockquai/JavaScript30/tree/master/04-Array%20Cardio%20Day%201/script.js">github code</a></li>
+</ul>
+
+<h5 id="출처--javascript30com-30-day-vanilla-js-coding-challenge"><a href="https://javascript30.com/">출처 : [javascript30.com] 30 Day Vanilla JS Coding Challenge</a></h5>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-05/ArrayCardioDay1" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-05/ArrayCardioDay1" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-05/ArrayCardioDay1" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-05/ArrayCardioDay1" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-05/ArrayCardioDay1" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2017 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

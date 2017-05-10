@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Drun Kit</title>
+  <meta name="description" content="HTML data-* attributes  HTML5의 Custom Data Attributes 데이터 표현이 가능  태그에 대한 추가적인 정보를 제공하는 일종의 메타데이터(Metadata)  data-* 속성은 HTML 엘리먼트내에서 별다른 역할을 하지 않는 단순한 데이터">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-05/DrunKit">
+  <link rel="alternate" type="application/rss+xml" title="Claire" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories">categories</a>
+      </li>
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive">archive</a>
+      </li>
+      <!-- 원본  -->
+      <!--  
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+        -->
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "https://rockquai.github.io/img/js30-01.jpg"
+  
+  alt="Drun Kit feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Drun Kit">Drun Kit</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 MAY 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="html-data--attributes"><a href="http://blog.saltfactory.net/using-html5-custom-data-attributes/">HTML data-* attributes</a></h3>
+<ul>
+  <li>HTML5의 <code class="highlighter-rouge">Custom Data Attributes</code> 데이터 표현이 가능</li>
+  <li>태그에 대한 추가적인 정보를 제공하는 일종의 메타데이터(Metadata)</li>
+  <li><code class="highlighter-rouge">data-*</code> 속성은 HTML 엘리먼트내에서 별다른 역할을 하지 않는 단순한 데이터</li>
+</ul>
+
+<!--more-->
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-key=</span><span class="s">"65"</span> <span class="na">class=</span><span class="s">"key"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;kbd&gt;</span>A<span class="nt">&lt;/kbd&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sound"</span><span class="nt">&gt;</span>clap<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;audio</span> <span class="na">data-key=</span><span class="s">"65"</span> <span class="na">src=</span><span class="s">"sounds/clap.wav"</span><span class="nt">&gt;&lt;/audio&gt;</span></code></pre></figure>
+
+<h3 id="keyboardevent"><a href="https://developer.mozilla.org/ko/docs/Web/API/KeyboardEvent">KeyboardEvent</a></h3>
+<ul>
+  <li>키보드에 대한 사용자의 동작을 나타내는 개체</li>
+  <li>입력받은 키는 개별 이벤트로 표시되고 동작의 종류는 이벤트의 종류 ( <code class="highlighter-rouge">keydown</code> / <code class="highlighter-rouge">keypress</code>/ <code class="highlighter-rouge">keyup</code> )로 표시</li>
+</ul>
+
+<h3 id="classlist"><a href="https://developer.mozilla.org/ko/docs/Web/API/Element/classList">classList</a></h3>
+<ul>
+  <li><code class="highlighter-rouge">add</code> : 요소의 클래스 목록에 <code class="highlighter-rouge">클래스 추가</code></li>
+  <li><code class="highlighter-rouge">remove</code> : 요소의 클래스 목록에서 <code class="highlighter-rouge">클래스 삭제</code></li>
+  <li><code class="highlighter-rouge">toggle</code> : 요소의 클래스 목록 중 특정 <code class="highlighter-rouge">클래스 전환</code></li>
+  <li><code class="highlighter-rouge">contains</code> : 요소의 클래스 목록이 특정 <code class="highlighter-rouge">클래스를 포함 여부 확인</code></li>
+</ul>
+
+<h3 id="transitionend"><a href="https://developer.mozilla.org/en-US/docs/Web/Events/transitionend">transitionend</a></h3>
+<ul>
+  <li>CSS3의 <code class="highlighter-rouge">transition</code>가 완료된 이후에 발생하는 이벤트</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">removeTransition</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">e</span><span class="p">.</span><span class="nx">propertyName</span> <span class="o">!==</span> <span class="s1">'transform'</span> <span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="c1">// console.log(e.propertyName);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'playing'</span><span class="p">);</span> <span class="c1">// css의 'transition: all 0.07s;' 속도에 맞춰서 `.playing` 삭제</span>
+<span class="p">}</span>
+
+<span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span> <span class="nx">key</span> <span class="o">=&gt;</span> <span class="nx">key</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'transitionend'</span><span class="p">,</span> <span class="nx">removeTransition</span><span class="p">)</span> <span class="p">);</span></code></pre></figure>
+
+<h3 id="code--view">code &amp; view</h3>
+<ul>
+  <li><a href="https://github.com/rockquai/JavaScript30/blob/master/01-JavaScript%20Drum%20Kit/script.js">github code</a></li>
+  <li><a href="https://rockquai.github.io/JavaScript30/01-JavaScript%20Drum%20Kit/">view</a></li>
+</ul>
+
+<h5 id="출처--javascript30com-30-day-vanilla-js-coding-challenge"><a href="https://javascript30.com/">출처 : [javascript30.com] 30 Day Vanilla JS Coding Challenge</a></h5>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-05/DrunKit" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-05/DrunKit" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-05/DrunKit" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-05/DrunKit" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-05/DrunKit" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2017 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
