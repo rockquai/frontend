@@ -3,10 +3,11 @@
 # Site wide configuration
 ####################################
 #
-title: Claire
+title: Claire Blog
 email: rockquai@gmail.com
-description: Front-End Skill
-url: https://rockquai.github.io/
+keywords: Front-End JavaScript ES6 ES5 HTML5 CSS3 Sass Grid-System SEO
+description: Front-End Developer Skill
+url: https://rockquai.github.io
 
 
 #

@@ -14,14 +14,6 @@
       <li class="nav-item">
         <a href="{{ site.url }}/">home</a>
       </li>
-      <!-- <li class="nav-item">
-        <a href="{{ site.url }}/categories">categories</a>
-      </li>
-      <li class="nav-item">
-        <a href="{{ site.url }}/archive">archive</a>
-      </li> -->
-
-      <!-- 원본  -->
       {% for page in site.pages %} {% if page.title %}
       <li class="nav-item">
         <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
