@@ -4,8 +4,9 @@ title:  "Flex Panels Image Gallery"
 date:   2017-05-05
 categories: [JavaScript30]
 comments: true
+tags: [JavaScript,ES6,VanillaJS]
 image:
-  feature: https://rockquai.github.io/img/js30-05.jpg
+  feature: ../assets/javascript30/js30-05.jpg
 ---
 
 ### [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)

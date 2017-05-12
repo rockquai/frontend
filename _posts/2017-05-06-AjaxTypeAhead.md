@@ -4,8 +4,9 @@ title:  "Ajax Type Ahead"
 date: 2017-05-06
 categories: [JavaScript30]
 comments: true
+tags: [JavaScript,ES6,VanillaJS]
 image:
-  feature: https://rockquai.github.io/img/js30-06.jpg
+  feature: ../assets/javascript30/js30-06.jpg
 ---
 
 ### [Fetch API](http://hacks.mozilla.or.kr/2015/05/this-api-is-so-fetching/)

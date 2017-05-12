@@ -1442,7 +1442,7 @@ pre code {
 
 /* LAYOUT CSS */
 .cover {
-  background: url(https://claire0130.github.io/img/cover.jpg);
+  background: url(/img/cover.jpg);
   position: fixed;
   text-align: center;
   width: 100%;

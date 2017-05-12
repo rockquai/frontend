@@ -6,7 +6,7 @@
 title: Claire
 email: rockquai@gmail.com
 description: Front-End Skill
-url: # the base hostname & protocol for your site
+url: https://rockquai.github.io/
 
 
 #
@@ -14,7 +14,7 @@ url: # the base hostname & protocol for your site
 # Jekyll configuration
 ####################################
 #
-timezone:          Europe/Paris
+timezone:          Asia/Seoul
 markdown:          kramdown
 highlighter:       rouge
 excerpt_separator: <!--more-->
