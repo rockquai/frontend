@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>대표적인 상황 this</title>
+  <meta name="keywords" content="  JavaScript의 this는 런타임 때, 실행할 때 this가 가리킬 때 변경이 된다.  상황에 따라서 this가 달라지기 때문에 디버깅을 통해 알아 내야 한다.">
+  <meta name="description" content="  JavaScript의 this는 런타임 때, 실행할 때 this가 가리킬 때 변경이 된다.  상황에 따라서 this가 달라지기 때문에 디버깅을 통해 알아 내야 한다.">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/This">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+<div class="post-image-feature">
+  <img class="feature-image" src=
+  
+  "http://localhost:4000/img/../assets/javascript/js-02-This.gif"
+  
+  alt="대표적인 상황 this feature image">
+
+  
+</div><!-- /.image-wrap -->
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="대표적인 상황 this">대표적인 상황 this</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        2 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>JavaScript의 <code class="highlighter-rouge">this</code>는 런타임 때, 실행할 때 this가 가리킬 때 변경이 된다.</li>
+  <li>상황에 따라서 <code class="highlighter-rouge">this</code>가 달라지기 때문에 디버깅을 통해 알아 내야 한다.</li>
+</ul>
+
+<!--more-->
+
+<h3 id="대표적인-상황-this">대표적인 상황 This</h3>
+<h4 id="1-function">1. function</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">code</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">code</span><span class="p">();</span> <span class="c1">//window</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>window : 최상위 오브젝트로 전역객체이다.</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">code</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="s1">'this is a'</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">code</span><span class="p">();</span> <span class="c1">// this is a</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// this is a</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// this is a</span>
+</code></pre></div></div>
+
+<h4 id="2-function---constructor">2. function - constructor</h4>
+<ul>
+  <li>객체지향적인 언어에서는 클래스를 만들고 클래스를 <code class="highlighter-rouge">new키워드</code>로 부를 때는 인스턴스 즉 <code class="highlighter-rouge">객체를 반환</code>한다. JavaScript도 유사하게 동작한다.</li>
+  <li><code class="highlighter-rouge">new</code>가 객체를 만들어서 반환해 준다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Code</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'this is name'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nx">Code</span><span class="p">();</span> <span class="c1">// Code {name: "this is name"}</span>
+</code></pre></div></div>
+
+<h4 id="3-object-literal">3. object literal</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">code</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// 여기의 `this`는 `obj`를 가리킨다</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">code</span><span class="p">()</span> <span class="c1">//object (obj)</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">code</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">printCode</span><span class="p">();</span> 
+	<span class="p">},</span>
+	<span class="na">printCode</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'printCode!'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">code</span><span class="p">();</span> <span class="c1">// pprintCode!</span>
+</code></pre></div></div>
+
+<h4 id="4-async비동기">4. async(비동기)</h4>
+<ul>
+  <li><code class="highlighter-rouge">this</code>가 헷갈리는 큰 이유는 <code class="highlighter-rouge">async 로직</code>때문이다. (비동기 상황에 문제가 된다)</li>
+  <li><code class="highlighter-rouge">obj.code()</code> 실행하면 <code class="highlighter-rouge">code함수</code>가 실행이 되고 그 안에 있는 <code class="highlighter-rouge">setTimeout함수</code>가 1초뒤에 실행.
+<code class="highlighter-rouge">setTimeout함수</code>는 <code class="highlighter-rouge">code함수</code>가 실행 될때 실행되어 보이지만 <code class="highlighter-rouge">setTimeout 콜백함수</code>로써 <code class="highlighter-rouge">EventQueue</code>라는 공간에 보관되어 있다가 임의로 시작된다. 즉, <code class="highlighter-rouge">obj객체</code>와 <code class="highlighter-rouge">code함수</code>와 전혀 상관없이 나중에 실행되는 함수.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">code</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">printCode</span><span class="p">();</span>
+        <span class="p">},</span><span class="mi">1000</span><span class="p">);</span>
+	<span class="p">},</span>
+	<span class="na">printCode</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'hello obj!!!'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">code</span><span class="p">();</span> <span class="c1">// 1초뒤에 `Uncaught TypeError: this.printCode is not a function`</span>
+</code></pre></div></div>
+
+<h4 id="5-bind-메서드를-활용해-해결가능">5. bind 메서드를 활용해 해결가능</h4>
+<ul>
+  <li><code class="highlighter-rouge">setTimeout안에 있는 함수</code>는 다른 곳으로 빠져 나와 실행이 된다.</li>
+  <li><code class="highlighter-rouge">obj객체</code>, <code class="highlighter-rouge">code함수</code>와 전혀 상관없는 <code class="highlighter-rouge">EventQueue</code>에서 실행되는 함수이기 때문에 여기에 <code class="highlighter-rouge">this</code>는 실행 컨텍스트인 <code class="highlighter-rouge">obj객체</code>를 벗어나기 때문</li>
+  <li><code class="highlighter-rouge">this</code>를 내가 원하는 실행 콘텍스트로 지정하려면 <code class="highlighter-rouge">bind</code>매소드를 사용하면 <code class="highlighter-rouge">this</code>를 지정할 수 있다 =&gt; <code class="highlighter-rouge">bind(this)</code></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">printCode</span><span class="p">();</span> 
+	<span class="p">},</span><span class="mi">1000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">code</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">printCode</span><span class="p">();</span>
+        <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// bind로 지정한 `this`는 `obj객체`를 가리킨다</span>
+	<span class="p">},</span>
+	<span class="na">printCode</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'hello obj!!!'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">obj</span><span class="p">.</span><span class="nx">code</span><span class="p">();</span> <span class="c1">// 1초뒤에 `hello obj!!!` 실행</span>
+
+</code></pre></div></div>
+
+<h4 id="6-debugging">6. debugging</h4>
+<ul>
+  <li>debugger로 그때그때의 this를 확인하는 것이 this를 이해하고 문제를 해결하는 좋은 방법이다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">code</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kr">debugger</span><span class="p">;</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">printCode</span><span class="p">();</span> <span class="c1">// this : Window</span>
+		<span class="p">},</span><span class="mi">1000</span><span class="p">);</span>
+	<span class="p">},</span>
+	<span class="na">printCode</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'hello obj!!!'</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/This" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/This" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/This" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/This" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/This" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2017 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

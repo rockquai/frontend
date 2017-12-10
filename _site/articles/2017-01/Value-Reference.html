@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Call by value, Call by reference</title>
+  <meta name="keywords" content="1. Call by value ( = 원시 데이터 유형(primitive type))  값에 의한 호출, 값이 그대로 복사되는 자료형  함수를 호출하면 매개변수를 함수 내부로 전달  이 때 변수의 값을 복사해서 전달하는 방식  대부분의 언어에서 기본 데이터 타입을 전달하면 발생">
+  <meta name="description" content="1. Call by value ( = 원시 데이터 유형(primitive type))  값에 의한 호출, 값이 그대로 복사되는 자료형  함수를 호출하면 매개변수를 함수 내부로 전달  이 때 변수의 값을 복사해서 전달하는 방식  대부분의 언어에서 기본 데이터 타입을 전달하면 발생">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/Value-Reference">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Call by value, Call by reference">Call by value, Call by reference</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="1-call-by-value---원시-데이터-유형primitive-type">1. Call by value ( = 원시 데이터 유형(primitive type))</h3>
+<ul>
+  <li>값에 의한 호출, <code class="highlighter-rouge">값이 그대로 복사</code>되는 자료형</li>
+  <li>함수를 호출하면 매개변수를 함수 내부로 전달</li>
+  <li>이 때 <code class="highlighter-rouge">변수의 값을 복사</code>해서 전달하는 방식</li>
+  <li>대부분의 언어에서 기본 데이터 타입을 전달하면 발생</li>
+</ul>
+
+<!--more-->
+
+<h4 id="number-call-by-value-호출"><code class="highlighter-rouge">Number</code> call by value 호출</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var foo = function(num) {
+	num++;
+	console.log(num); // 6
+}
+
+var a = 5;
+foo(a);
+console.log(a); // 5
+</code></pre></div></div>
+
+<h4 id="string-call-by-value-호출"><code class="highlighter-rouge">String</code> call by value 호출</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var foo = function(str) {
+	// str +='world';
+	str = str.concat('world');
+	console.log(str); // helloworld
+}
+
+var a = 'hello';
+foo(a);
+console.log(a); // hello
+</code></pre></div></div>
+
+<h4 id="ba-구문에서도-값-복사"><code class="highlighter-rouge">b=a;</code> 구문에서도 값 복사</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var a = 5;
+var b = a; // 참조
+bar a = a + 5;
+console.log(a); // 10
+console.log(b); // 5
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="2-call-by-reference---복합-데이터-유형reference-type">2. Call by reference ( = 복합 데이터 유형(reference type))</h3>
+<ul>
+  <li>참조에 의한 호출, 값의 주소(메모리에서 값이 있는 곳을 가리키는 값)만 복사되는 자료형.</li>
+  <li>함수 호출시 매개별수가 참조일 경우 참조를 전달</li>
+  <li>원본 객체애 변경겂이 반영됨</li>
+</ul>
+
+<h4 id="참조reference란">참조(reference)란?</h4>
+<ul>
+  <li>실제 변수가 아니라 간접적으로 변수에 접근하는 방법</li>
+  <li><code class="highlighter-rouge">javascrpt</code> 기본 타입이 아닌 객체를 생성하면 참조 변수가 만들어짐
+    <ul>
+      <li>array, objcet,…</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">Swift</code>
+    <ul>
+      <li>class : 참조 생성 (js의 object)</li>
+      <li>struct : 기본은 값 복사하지만 참조도 사용 가능</li>
+      <li>배열, 딕셔너리, 스트링 모두 sturct</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="array-object는-call-by-reference로-호출">array, object는 <code class="highlighter-rouge">Call by reference</code>로 호출</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'score'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">score</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 60</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 60</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">accel</span><span class="p">(</span><span class="nx">car</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">car</span><span class="p">.</span><span class="nx">speed</span> <span class="o">+=</span><span class="mi">50</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span> <span class="p">:</span> <span class="s1">'bmw'</span><span class="p">,</span> <span class="s1">'speed'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">};</span>
+<span class="nx">accel</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span> <span class="c1">// {'name' : 'bmw', 'speed' : 50}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">arr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">255</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/Value-Reference" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/Value-Reference" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/Value-Reference" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/Value-Reference" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/Value-Reference" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2017 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
