@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>React란?</title>
+  <meta name="keywords" content="  출처: inflearn - velopert님 강의  React 소개 (장점, 단점, 특징)">
+  <meta name="description" content="  출처: inflearn - velopert님 강의  React 소개 (장점, 단점, 특징)">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-06/React-Basic">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="React란?">React란?</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 JUN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    1 min read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li><a href="https://www.inflearn.com/course/react-%EA%B0%95%EC%A2%8C-velopert/">출처: inflearn - velopert님 강의</a></li>
+  <li>React 소개 (장점, 단점, 특징)</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h3 id="react-소개"><a href="https://velopert.com/775">React 소개</a></h3>
+<h4 id="react">React</h4>
+<ul>
+  <li>React는 페이스북에서 개발한 유저인터페이스 라이브러리로서 개발자로 하여금 재사용 가능한 UI를 생성.</li>
+  <li>페이스북, 인스타그램, 야후, 넷플릭스를 포함한 많은 큰 서비스에서 사용.</li>
+</ul>
+
+<h4 id="react의-장점">React의 장점</h4>
+<ul>
+  <li>배우기 간단하다</li>
+  <li>뛰어난 <code class="highlighter-rouge">Garbage Collection</code> 메모리 관리 성능</li>
+  <li>서버 &amp; 클라이언트 렌더링 (이를 통해 브라우저측의 초기 렌더링 딜레이를 줄이고, SEO 호환도 가능)</li>
+  <li>Component의 가독성이 매우 높고 간단하여 쉬운 유지보수가 가능</li>
+  <li>매우 간편한 UI 수정 및 재사용</li>
+  <li>페이스북이 밀어준다</li>
+  <li>다른 프레임워크나 라이브러리와 혼용가능</li>
+</ul>
+
+<h4 id="react의-단점">React의 단점</h4>
+<ul>
+  <li><code class="highlighter-rouge">VIEW ONLY</code> 어플리케이션의 View 레이어만 다루므로 이 외의 부분은 다른 기술을 사용해야 함
+    <ul>
+      <li>Ajax, Router 등의 기능은 직접 구현하거나 다른 모듈을 설치하여 사용.</li>
+    </ul>
+  </li>
+  <li>React 버전 v15부터 <code class="highlighter-rouge">IE8 이하 버전을 지원하지 않는다</code></li>
+</ul>
+
+<h4 id="react의-특징">React의 특징</h4>
+<ul>
+  <li><code class="highlighter-rouge">Virtual DOM</code> 을 사용</li>
+  <li><code class="highlighter-rouge">JSX</code> : JSX 는 JavaScript 의 확장 문법</li>
+  <li><code class="highlighter-rouge">Components</code> : React는 모두 Component 에 대한 것. React 개발을 할 때는 모든 것을 Component 로서 생각</li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-06/React-Basic" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-06/React-Basic" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-06/React-Basic" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-06/React-Basic" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-06/React-Basic" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

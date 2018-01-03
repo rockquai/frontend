@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Redux: 5. Reducer</title>
+  <meta name="keywords" content="  출처: inflearn - velopert님 강의  reducers / counter.js 생성  reducers / ui.js 생성">
+  <meta name="description" content="  출처: inflearn - velopert님 강의  reducers / counter.js 생성  reducers / ui.js 생성">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-06/Redux5">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Redux: 5. Reducer">Redux: 5. Reducer</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        10 JUN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li><a href="https://www.inflearn.com/course/react-%EA%B0%95%EC%A2%8C-velopert/">출처: inflearn - velopert님 강의</a></li>
+  <li><code class="highlighter-rouge">reducers / counter.js</code> 생성</li>
+  <li><code class="highlighter-rouge">reducers / ui.js</code> 생성</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h2 id="5-reducer">5. Reducer</h2>
+<ul>
+  <li>변화를 일으키는 함수</li>
+  <li>순수해야 한다 <br />
+    <ul>
+      <li><code class="highlighter-rouge">http</code> 요청같은 비동기 작업은 하면 안된다.<br /></li>
+      <li>전달받은 인수 변경하면 안된다.<br /></li>
+      <li>동일한 인수 = 동일한 결과.<br /></li>
+      <li>‘순수하지 않은’ API 사용 불가 (Date.now(), Math.random() 등)</li>
+    </ul>
+  </li>
+  <li>함수의 역활은 <code class="highlighter-rouge">이전 상태</code>와 <code class="highlighter-rouge">액션</code>을 받아서 <code class="highlighter-rouge">다음 상태</code>를 반환한다.</li>
+  <li>어떤 작업을 할지 정보를 지니고 있는 객체 그것을 전달하면 <code class="highlighter-rouge">새로운 상태</code>를 반환한다. (이전 상태를 변경하는게 아님.)</li>
+  <li>기존 상태를 <code class="highlighter-rouge">복사</code>하고 변화를 주고 액션에 따라서 <code class="highlighter-rouge">반환</code>한다.</li>
+</ul>
+
+<h3 id="reducers--counterjs-생성"><code class="highlighter-rouge">reducers / counter.js</code> 생성</h3>
+<ul>
+  <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters">default function parameter</a></li>
+  <li><a href="">spread operator(…)</a></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// counter.js</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">types</span> <span class="k">from</span> <span class="s1">'../action/ActionTypes'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="만약-state값이-여러개-일-경우-y의-값을-바꿀-경우-">만약 state값이 여러개 일 경우, <code class="highlighter-rouge">y</code>의 값을 바꿀 경우 <br /></h4>
+<p>: <code class="highlighter-rouge">dummyObj: { ...state.dumbObj, u : 0 }</code>의 <code class="highlighter-rouge">u</code>의 값이 <code class="highlighter-rouge">0</code>으로 덮여씌여진다. <br /></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// counter.js</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">types</span> <span class="k">from</span> <span class="s1">'../action/ActionTypes'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">number</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">dummy</span> <span class="p">:</span> <span class="s1">'dummy'</span><span class="p">,</span>
+    <span class="na">dumbObj</span> <span class="p">:</span> <span class="p">{</span>
+        <span class="na">d</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">u</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">m</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">b</span> <span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">counter</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span> <span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">type</span><span class="p">.</span><span class="na">INCREMENT</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+                <span class="na">number</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="na">dummyObj</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">.</span><span class="nx">dumbObj</span><span class="p">,</span> <span class="na">u</span> <span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+            <span class="p">};</span>
+        <span class="k">case</span> <span class="nx">type</span><span class="p">.</span><span class="na">DECREMENT</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="p">...</span><span class="nx">state</span><span class="p">,</span>
+                <span class="na">number</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">number</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="p">};</span>
+        <span class="nl">default</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span>    
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="reducers--uijs-생성"><code class="highlighter-rouge">reducers / ui.js</code> 생성</h3>
+<ul>
+  <li>color를 담당.</li>
+  <li>리듀서가 두개 이상일 경우 하나로 합쳐줘야 한다. =&gt; <code class="highlighter-rouge">index.js</code> 생성해서 <a href="http://redux.js.org/docs/api/combineReducers.html">combineReducers</a> 이용해서 합침.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'redux'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">counter</span> <span class="k">from</span> <span class="s1">'./counter'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ui</span> <span class="k">from</span> <span class="s1">'./ui'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">reducers</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
+    <span class="nx">counter</span><span class="p">,</span> <span class="nx">ui</span>
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">reducers</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="code--view">code &amp; view</h3>
+<ul>
+  <li><a href="https://github.com/rockquai/React-Express/tree/master/05.React-Redux/redux-example">github code</a></li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-06/Redux5" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-06/Redux5" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-06/Redux5" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-06/Redux5" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-06/Redux5" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Redux: 2. 특징과 흐름</title>
+  <meta name="keywords" content="  출처: inflearn - velopert님 강의  Redux로의 카툰 안내서  데이터 흐름(the data flow)  Presentational Components  Container Components">
+  <meta name="description" content="  출처: inflearn - velopert님 강의  Redux로의 카툰 안내서  데이터 흐름(the data flow)  Presentational Components  Container Components">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-06/Redux2">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Redux: 2. 특징과 흐름">Redux: 2. 특징과 흐름</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 JUN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li><a href="https://www.inflearn.com/course/react-%EA%B0%95%EC%A2%8C-velopert/">출처: inflearn - velopert님 강의</a></li>
+  <li>Redux로의 카툰 안내서</li>
+  <li>데이터 흐름(the data flow)</li>
+  <li>Presentational Components</li>
+  <li>Container Components</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h2 id="redux-특징과-흐름">Redux: 특징과 흐름</h2>
+<ul>
+  <li>
+    <dl>
+      <dt><code class="highlighter-rouge">Single Source of Truth</code> (단 하나의 진실의 근원)<br /></dt>
+      <dd>Application의 state를 위해 단 한개의 stroe를 사용한다. Flux와의 주요 차이점.(Flux에서는 여러개의 Store를 사용) <br /></dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><code class="highlighter-rouge">State is Read-only</code>  (State는 읽기전용이다)<br /></dt>
+      <dd>Application에서 store의 state를 직접 변경할 수 없다. state를 변경하기 위해서는 <code class="highlighter-rouge">무조건 action이 dispatch</code> 되어야 한다.<br /></dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><code class="highlighter-rouge">Changes are made with Pure Functions</code> (변화는 순수 함수로 만들어져야 한다)<br /></dt>
+      <dd>비동기 처리를 하며 안된다.<br /></dd>
+      <dd>action 객체를 처리하는 함수를 reducer라고 부른다.<br /></dd>
+      <dd>reducer는 정보를 바아서 상태를 어떻게 업데이트 할 지 정의한다.<br /></dd>
+      <dd>reducer는 ‘순수 함수’로 작성 되어야 한다.<br /></dd>
+    </dl>
+    <ul>
+      <li>외부 네트워크 혹은 데이터베이스에 접근하지 않아야하며, 인수는 변경되지 않아야한다.<br /></li>
+      <li>같은 인수로 실행된 함수는 언제나 같은 결과를 반환해야한다.<br /></li>
+      <li>‘순수하지 않은’ API 사용 불가 (Date.now(), Math.random() 등)<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="redux로의-카툰-안내서"><a href="http://bestalign.github.io/2015/10/26/cartoon-intro-to-redux/">Redux로의 카툰 안내서</a></h2>
+<ul>
+  <li>Flux에서 Redux로 오면서 캐릭터의 배역이 약간 달라졌다.<br /></li>
+  <li>액션 생성자(action creators)<br />
+    <ul>
+      <li>Redux는 Flux에서 액션 생성자를 그대로 가져왔다.<br /></li>
+    </ul>
+  </li>
+  <li>스토어(store)<br />
+    <ul>
+      <li>Flux에서는 다수의 스토어 갖지만, Redux는 단 하나의 스토어만 가진다.<br /></li>
+    </ul>
+  </li>
+  <li>리듀서(the reducers)<br />
+    <ul>
+      <li>변화를 일으켜주는 함수<br /></li>
+      <li><code class="highlighter-rouge">store</code>는 <code class="highlighter-rouge">reducers</code>한테 어떤 상태를 변화 할지 묻는다.<br /></li>
+      <li><code class="highlighter-rouge">reducers</code>는 한개가 될 수도 있고 여러개도 될 수 가 있다.<br /></li>
+      <li>한개만 있는 리듀서는 <code class="highlighter-rouge">root reducer(루트 리듀서)</code>가 되면 액션을 받으면 처리하고, 여러개의 리듀서가 있을 경우 그 리듀서들 중에서 전달받은 액션을 찾아내서 그 액션을 담당하는 리듀서에게 전달을 한다.<br /></li>
+      <li>리듀서는 마치 서류 복사에 지나치게 열성적인 사무실 직원들과 같다. 일을 망치는 것에 아주 민감하므로 넘겨받은 예전 상태는 변경하지 않는다. 대신 <code class="highlighter-rouge">새로운 복사본</code>을 만든 후 거기에다가 모든 변경사항을 적용한다.<br /></li>
+      <li>Redux의 키 아이디어 중 하나이다. 상태 객체는 직접 변경되지 않는다. 대신, <code class="highlighter-rouge">각각의 상태 조각이 복사 후 변경되고 새로운 상태 객체 하나로 합쳐진다</code>.<br /></li>
+    </ul>
+  </li>
+  <li>뷰(the view) : 영민한(똑똑한) 컴포넌트와 우직한(멍청한) 컴포넌트(smart and dumb components)<br />
+    <ul>
+      <li>영민한(똑똑한) 컴포넌트<br />
+        <ul>
+          <li>액션 처리를 책임진다.<br /></li>
+          <li>props를 통해서 우직한 컴포넌트에 함수를 보낸다.<br /></li>
+          <li>자기 자신의 CSS style을 가지고 있지 않다.<br /></li>
+          <li>자기 자신의 DOM을 거의 가지고 있지 않다. 대신, DOM 요소들을 관리하는 우직한 컴포넌트들을 관리한다.<br /></li>
+        </ul>
+      </li>
+      <li>우직한(멍청한) 컴포넌트<br />
+        <ul>
+          <li>액션에 직접 의존성을 가지지는 않는다.  모든 액션을 props를 통해서 넘겨받기 때문이다.<br /></li>
+          <li>CSS style도 포함하고 있다 (따로 style props를 받아 기본 style에 병합시켜서 style을 바꿀수도 있다).<br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th>Presentational Components</th>
+      <th>Container Components</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">위치</td>
+      <td>최상위, 라우트 핸들러</td>
+      <td>중간과 말단 컴포넌트</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Redux와 연관됨</td>
+      <td>예</td>
+      <td>아니오</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터를 읽기 위해</td>
+      <td>Redux 상태를 구독</td>
+      <td>props에서 데이터를 읽음</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터를 바꾸기 위해</td>
+      <td>Redux 액션을 보냄</td>
+      <td>props에서 콜백을 부름</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>앱의 최상위 컴포넌트(라우터 핸들러같은)만이 Redux와 연관되는 것이 좋다. 그 아래의 컴포넌트들은 우직해야 하고 모든 데이터를 props를 통해 전달받아야 한다. <br />
+이 할일 앱에서는 뷰 게층의 최상단에 하나의 영민한 컴포넌트만을 둠. 더 복잡한 앱에서는 여러개를 둘 수 있음. 영민한 컴포넌트를 중첩시킬수도 있지만, 가능한 props만 내려주는 것을 권함.</p>
+</blockquote>
+
+<ul>
+  <li>뷰 레이어 바인딩(the view layer binding)<br />
+    <ul>
+      <li>React에서 redux를 사용할 때 좀 더 쉽게 모든 컴포넌트를 스토어에 연결<br /></li>
+      <li>IT 부서와 같다. 많은 기술적인 세부사항들을 처리해서 트리 구조가 세부사항에 신경 쓰지 않도록 해준다<br /></li>
+    </ul>
+  </li>
+  <li>루트 컴포넌트(the root component)<br />
+    <ul>
+      <li>CEO와 같다.<br /></li>
+      <li>모든 팀이 일이 하도록 임무를 가지고 있다. redux의 기본적인 설정을 맡는다. 설정이후에는 하는 일이 없다.<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="데이터-흐름the-data-flow">데이터 흐름(the data flow)</h3>
+<ol>
+  <li>뷰가 액션을 요청한다. 액션 생성자가 포맷을 변환한 뒤 돌려준다.</li>
+  <li>뷰가 스토어한데 액션을 준다</li>
+  <li>스토어가 현재 상태 트리와 액션을 루트 리듀서에게 보낸다.</li>
+  <li>루트 리듀서가 현재 상태에 맞게 나눠서 담당 서브 리듀서에게 보낸다.</li>
+  <li>서브 리듀서는 상태 사본을 만들어서 변경해야 할 곳을 변경하고 루트 리듀서에게 사본을 돌려둔다.</li>
+  <li>루트 리듀서는 변경된 상태를 다 받아서 한곳에 모아서 스토어게 돌려준다.</li>
+  <li>스토어는 뷰 레이어 바인딩한테 상태가 변경됐다는 걸을 알려주면</li>
+  <li>뷰 레이어 바인딩은 스토어에게 새로운 상태를 보내달라고 요청한다.</li>
+  <li>새 데이터를 받고 뷰한테 화면의 특정부분을 업데이트하라고 한다.</li>
+</ol>
+
+<hr />
+
+<h3 id="code--view">code &amp; view</h3>
+<ul>
+  <li><a href="https://github.com/rockquai/React-Express/tree/master/05.React-Redux/redux-example">github code</a></li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-06/Redux2" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-06/Redux2" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-06/Redux2" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-06/Redux2" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-06/Redux2" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

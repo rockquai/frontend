@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Redux: 4. Action</title>
+  <meta name="keywords" content="  출처: inflearn - velopert님 강의  actions / ActionTypes.js 생성  actions / index.js 생성">
+  <meta name="description" content="  출처: inflearn - velopert님 강의  actions / ActionTypes.js 생성  actions / index.js 생성">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-06/Redux4">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Redux: 4. Action">Redux: 4. Action</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        9 JUN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li><a href="https://www.inflearn.com/course/react-%EA%B0%95%EC%A2%8C-velopert/">출처: inflearn - velopert님 강의</a></li>
+  <li><code class="highlighter-rouge">actions / ActionTypes.js</code> 생성</li>
+  <li><code class="highlighter-rouge">actions / index.js</code> 생성</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h2 id="4-action-">4. Action <br /></h2>
+<p>: 작업에 대한 정보를 지니고 있는 <code class="highlighter-rouge">객체</code> <br /></p>
+
+<h3 id="필요한-액션은">필요한 액션은?</h3>
+<ol>
+  <li>값을 <code class="highlighter-rouge">증가</code> 시키기 (+1) : INCREMENT</li>
+  <li>값을 <code class="highlighter-rouge">감소</code> 시키기 (-1) : DECREMENT</li>
+  <li>새로운 색상 설정하기 : SET_COLOR</li>
+</ol>
+
+<h3 id="actions--actiontypesjs-생성"><code class="highlighter-rouge">actions / ActionTypes.js</code> 생성</h3>
+<ul>
+  <li>action 이름을 <code class="highlighter-rouge">상수</code> 형태로 만들어고 다른 파일에서 불러와서 사용 할 수 있도록 내보낸다</li>
+  <li>action 객체이다</li>
+  <li><code class="highlighter-rouge">type</code>종류에 따라서 redux가 일을 한다.</li>
+  <li>action이 생성될 때마다 객체를 생성하는 건 귀찮은 일이다. action 생성자 함수 이용</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// action 형태</span>
+<span class="p">{</span> <span class="nl">type</span><span class="p">:</span> <span class="s2">"INCREMENT"</span> <span class="p">}</span> <span class="c1">// 이 부분에서는 action에서 추가적인 정보가 필요가 없다</span>
+<span class="p">{</span> <span class="nl">type</span><span class="p">:</span> <span class="s2">"DECREMENT"</span> <span class="p">}</span> <span class="c1">// 이 부분에서는 action에서 추가적인 정보가 필요가 없다</span>
+<span class="p">{</span> <span class="nl">type</span><span class="p">:</span> <span class="s2">"SET_COLOR"</span><span class="p">,</span>
+  <span class="nx">color</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span> <span class="c1">// 색상을 새로운 값을 설정이 필요. color:[200,200,200] 배열로 RGB 표현</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ActionTypes.js</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">INCREMENT</span> <span class="o">=</span> <span class="s2">"INCREMENT"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">DECREMENT</span> <span class="o">=</span> <span class="s2">"DECREMENT"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">SET_COLOR</span> <span class="o">=</span> <span class="s2">"SET_COLOR"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="action-생성자-함수-actions--indexjs-생성">Action 생성자 함수 <code class="highlighter-rouge">actions / index.js</code> 생성</h3>
+<ul>
+  <li>파일이름이 <code class="highlighter-rouge">index.js</code> 이유는 actions 디렉토리만 불러왔을 때, 자동으로 로드 되기 위함.</li>
+  <li><code class="highlighter-rouge">ActionTypes.js</code>에 <code class="highlighter-rouge">export</code>만 있는 경우에는 <code class="highlighter-rouge">export default</code>가 없다. 아래 코드처럼 불러오면 된다.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// index.js</span>
+<span class="c1">// 방법1.</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">INCREMENT</span><span class="p">,</span> <span class="nx">DECREMENT</span><span class="p">,</span> <span class="nx">SET_COLOR</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
+
+<span class="c1">// 방법2. 좀 더 쉬운 방법 : 각 상수에 접근이 가능다.</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">types</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">type</span><span class="p">.</span><span class="nx">INCREMENT</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">decrement</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">type</span><span class="p">.</span><span class="nx">DECREMENT</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">setColor</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="nx">type</span><span class="p">.</span><span class="nx">SET_COLOR</span><span class="p">,</span>
+        <span class="nx">color</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="code--view">code &amp; view</h3>
+<ul>
+  <li><a href="https://github.com/rockquai/React-Express/tree/master/05.React-Redux/redux-example">github code</a></li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-06/Redux4" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-06/Redux4" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-06/Redux4" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-06/Redux4" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-06/Redux4" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
