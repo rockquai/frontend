@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Document Object Model (DOM)</title>
+  <meta name="keywords" content="DOM API  DOM (Document Object Model): 현재 DOM Level 4 사용.  API: Application Programming Interface  queryAll(), query() 헬퍼함수">
+  <meta name="description" content="DOM API  DOM (Document Object Model): 현재 DOM Level 4 사용.  API: Application Programming Interface  queryAll(), query() 헬퍼함수">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/DOM">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Document Object Model (DOM)">Document Object Model (DOM)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        12 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="dom-api">DOM API</h2>
+<ul>
+  <li>DOM (Document Object Model): 현재 DOM Level 4 사용.</li>
+  <li>API: Application Programming Interface</li>
+  <li><code class="highlighter-rouge">queryAll()</code>, <code class="highlighter-rouge">query()</code> 헬퍼함수</li>
+</ul>
+
+<!--more-->
+
+<h3 id="dom-level-0-legacy-dom">DOM Level 0 (Legacy DOM)</h3>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'문서에 존재하는 객체: 하이퍼링크'</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">links</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'문서에 존재하는 객체: 네임드앵커'</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">anchors</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'문서에 존재하는 객체: 이미지'</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">images</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'문서에 존재하는 객체: 폼'</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'문서에 존재하는 객체: 폼 컨트롤'</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<h3 id="과도기-dom">과도기 DOM</h3>
+<ul>
+  <li>브라우저 전쟁시절로 서로간의 호환하지 못하게 기술을 사용하며 비표준이 난무 (1997년)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 문서의 모든 객체에 접근, CSS 속성을 조작할 수 있는 API를 각 회사가 제공.</span>
+<span class="c1">// NN(Netscape Navigator) : document.layers (현재 사라짐.)</span>
+<span class="c1">// IE(Internet Explorer) : document.all  (아직도 살아 있음.) </span>
+</code></pre></div></div>
+
+<h3 id="dom-level-1-1998년">DOM Level 1 (1998년)</h3>
+<ul>
+  <li>화합: W3C 주관 양대 회사가(넷스케이프, 마이크로소프트)가 손은 잡고 표준화 작업 착수</li>
+  <li>IE 6,7 안됨. IE8 이상만 호환</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'id-name'</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByName</span><span class="p">();</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'tag'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="dom-level-2-2000년">DOM Level 2 (2000년)</h3>
+<ul>
+  <li>불협화음 : 각기 다른 방식으로 발전된 진보 이벤트 모델</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">W3C</span><span class="p">:</span> <span class="p">.</span><span class="nx">addEventListener</span><span class="p">()</span> 	 <span class="err">표준</span><span class="p">,</span> <span class="nx">IE9</span><span class="o">+</span>
+<span class="nx">W3C</span><span class="p">:</span> <span class="p">.</span><span class="nx">removeEventListener</span><span class="p">()</span>  <span class="err">표준</span><span class="p">,</span> <span class="nx">IE9</span><span class="o">+</span>
+<span class="nx">MS</span><span class="p">:</span>  <span class="p">.</span><span class="nx">attachEvent</span><span class="p">()</span>			 <span class="err">비표준</span>
+<span class="nx">MS</span><span class="p">:</span>  <span class="p">.</span><span class="nx">detachEvent</span><span class="p">()</span>			 <span class="err">비표준</span>
+</code></pre></div></div>
+
+<h3 id="진보-이벤트-모델">진보 이벤트 모델</h3>
+<ul>
+  <li>onload 이벤트보다 DOMContentLoaded 이벤트가 더 빠르다.</li>
+  <li>DOMContentLoaded 이벤트 (이미지 로드와 상관없이 이벤트 발생)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'DOMContentLoaded'</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="왜-개발자는-class-속성을-사용하지-말라고-말했나">왜 개발자는 class 속성을 사용하지 말라고 말했나?</h2>
+<ul>
+  <li>[배경] IE6,7 (id 사용을 요구)</li>
+  <li>[CSS 제작자 입장] 모듈 디자인 : BEM / OOCSS / SMACSS</li>
+  <li>[Javscript 개발자 입장] IE6,7 시대에는 탐색이 느리고 어려웠다. 
+아래와 같은 방법으로 찾았다.</li>
+</ul>
+
+<h3 id="찾는-방법-class를-바로-찾을-수가-없었다">[찾는 방법] class를 바로 찾을 수가 없었다.</h3>
+<ul>
+  <li>
+    <ol>
+      <li>문서에서 모든 요소를 수집</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>수집된 모든 요소를 순환하여</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>class 속성 값에 존재하고 값이 일치하는지를 확인 한 후</li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>해당 요소를 반환해아 한다.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. 문서에서 모든 요소를 수집</span>
+<span class="kd">var</span> <span class="nx">filtered_el_list</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">all_els</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'*'</span><span class="p">);</span>
+<span class="c1">// console.log(all_els);</span>
+
+<span class="c1">// 2. 수집된 모든 요소를 순환하여</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">l</span><span class="o">=</span><span class="nx">all_els</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span><span class="nx">l</span><span class="p">;</span> <span class="nx">i</span><span class="o">=</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">all_els</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+	<span class="c1">// 3. class 속성 값에 존재하고 값이 일치하는지를 확인 한 후 </span>
+	<span class="c1">// 4. 해당 요소를 반환해아 한다.</span>
+	<span class="c1">// class가 'col-6'만 찾게 된다. 다른 class가 추가가 되면 찾을 수가 없다.</span>
+	<span class="k">if</span> <span class="p">(</span> <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">===</span> <span class="s1">'col-6'</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="nx">filtered_el_list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'filtered_el_list:'</span><span class="p">,</span> <span class="nx">filtered_el_list</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="요소노드-골라내기">요소노드 골라내기</h3>
+<ul>
+  <li>노드리스트에서 요소노드만 골라내는 것 또한 상당한 수고가 든다.</li>
+  <li>이 점에 DOM 스크립트 사용 시, 탬색(Traversal) 이 사용되지 않았던 이유.</li>
+</ul>
+
+<h4 id="nodetype">nodeType</h4>
+<ul>
+  <li>ELEMENT_NODE   === 1 (요소)</li>
+  <li>ATTRIBUTE_NODE === 2 (속성)</li>
+  <li>TEXT_NODE      === 3 (텍스트)</li>
+  <li>COMMENT_NODE   === 8 (주석)</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">node_collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">node_els</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">node</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">node_collection</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="p">(</span><span class="nx">node</span> <span class="o">=</span> <span class="nx">node_collection</span><span class="p">[</span><span class="o">--</span><span class="nx">i</span><span class="p">]);</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// if(node.nodeType === document.ELEMENT_NODE) {</span>
+	<span class="k">if</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">node_els</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'node_els'</span><span class="p">,</span> <span class="nx">node_els</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">el_node_collection</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">children</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'el_node_collection'</span><span class="p">,</span> <span class="nx">el_node_collection</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="queryall-query-헬퍼함수">queryAll(), query() 헬퍼함수</h2>
+<p>: 문서객체를 손쉽게 선택할 수 있도록 도와주는 함수</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">queryAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// 첫번째 전달인자(Argument)의 유효성 검사</span>
+	<span class="k">if</span><span class="p">(</span> <span class="k">typeof</span> <span class="nx">selector</span> <span class="o">!==</span> <span class="s1">'string'</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="nx">consol</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">'전달인자는 문자열로 전달해야 합니다.'</span><span class="p">);</span>
+		<span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// context가 없다면 </span>
+	<span class="c1">// 사용자 정의 값이 없을 경우, 값을 초기화</span>
+	<span class="c1">// context를 전달하지 않으면 undefined. !undefined=&gt; true</span>
+	
+	<span class="c1">// [방식1]</span>
+	<span class="c1">// if ( !context ) { document = document; }</span>
+
+	<span class="c1">// [방식2]</span>
+	<span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span> <span class="o">||</span> <span class="nb">document</span><span class="p">;</span>
+
+	<span class="c1">///////////////////////////////////////////////////////</span>
+	<span class="c1">// 두번째 전달인자(Argument)의 유효성 검사</span>
+	<span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">context</span> <span class="o">===</span> <span class="s1">'string'</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="nx">context</span> <span class="o">=</span> <span class="nx">query</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span><span class="p">(</span> <span class="nx">context</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">context</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">!==</span> <span class="mi">9</span> <span class="p">)</span> <span class="p">{</span> <span class="c1">// document.nodeType ==&gt; 9</span>
+		<span class="c1">// [방식1] error 메시지만 출력이 되어 return 해서 멈추는 방법.</span>
+		<span class="c1">// consol.error('두번째 전달인자는 요소노드어야 합니다.');</span>
+		<span class="c1">// return;</span>
+
+		<span class="c1">// [방식2] 메시지도 전달하고 함수 멈추는 방법</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'두번째 전달인자는 요소노드어야 합니다.'</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">);</span> <span class="c1">// Nodelist []</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">query</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">queryAll</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">context</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/DOM" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/DOM" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/DOM" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/DOM" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/DOM" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

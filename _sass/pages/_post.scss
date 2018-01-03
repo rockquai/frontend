@@ -34,7 +34,6 @@ section.post {
 }
 
 // Back home button
-
 .back-home a {
   font-size: 13px;
   font-weight: bold;
@@ -46,7 +45,6 @@ section.post {
 
 // Post title
 .post-title {
-
 }
 
 .post-title-link {
@@ -99,7 +97,7 @@ a.read-more {
 #post {
   padding-bottom: 50px;
   .post-header {
-    margin: 0 auto 50px;
+    margin: 0 auto 20px;
   }
 }
 
@@ -108,13 +106,13 @@ a.read-more {
   font-size: 2.8rem;
   color: #4a4a4a;
 }
-#post h2 {
-  margin: 2em 0 0.8em;
-  padding-bottom: 0.7em;
-  border-bottom: 1px solid #ddd;
-}
+// #post h2 {
+//   margin: 0;
+//   padding-bottom: 0.7em;
+//   border-bottom: 1px solid #ddd;
+// }
 #post h3 {
-  margin: 1.75em 0 1.2em;
+  margin: 0;
   position: relative;
 }
 

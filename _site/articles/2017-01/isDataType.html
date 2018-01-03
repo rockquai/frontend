@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>올바른 데이터 유형을 체크하는 방법</title>
+  <meta name="keywords" content="올바른 데이터 유형을 체크하는 방법  typeof 키워드  instanseof 키워드  .constructor 속성  사용자 정의 헬퍼 함수 isDtatType()">
+  <meta name="description" content="올바른 데이터 유형을 체크하는 방법  typeof 키워드  instanseof 키워드  .constructor 속성  사용자 정의 헬퍼 함수 isDtatType()">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/isDataType">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="올바른 데이터 유형을 체크하는 방법">올바른 데이터 유형을 체크하는 방법</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        7 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="올바른-데이터-유형을-체크하는-방법">올바른 데이터 유형을 체크하는 방법</h2>
+<ul>
+  <li><code class="highlighter-rouge">typeof</code> 키워드</li>
+  <li><code class="highlighter-rouge">instanseof</code> 키워드</li>
+  <li><code class="highlighter-rouge">.constructor</code> 속성</li>
+  <li>사용자 정의 헬퍼 함수 <code class="highlighter-rouge">isDtatType()</code></li>
+</ul>
+
+<!--more-->
+
+<h3 id="1-typeof-키워드">1. typeof 키워드</h3>
+<ul>
+  <li>typeof의 치명적인 설계 오류 : null, []를 올바르게 인식하지 못한다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">nu</span>  <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'null'</span><span class="p">,</span> <span class="k">typeof</span> <span class="nx">nu</span><span class="p">);</span> <span class="c1">// object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'arrary'</span><span class="p">,</span> <span class="k">typeof</span> <span class="nx">arr</span><span class="p">);</span> <span class="c1">// object</span>
+</code></pre></div></div>
+
+<h3 id="2-instanseof-키워드">2. instanseof 키워드</h3>
+<ul>
+  <li>실체화된 객체<code class="highlighter-rouge">instance</code> &lt;-&gt; 객체를 생성하는 생성자<code class="highlighter-rouge">constructor</code></li>
+  <li>e.g. Adobe Flash,  Adobe Illustrator, Sketch =&gt; <code class="highlighter-rouge">Symbols</code> 개념</li>
+  <li>{실체화된 객체} <code class="highlighter-rouge">instanceof</code> [객체를 생성하는 생성자]</li>
+  <li>객체가 동일 객체형의 인스턴스이면 <code class="highlighter-rouge">true</code>를 반환한다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">check_array_data</span> <span class="o">=</span> <span class="nx">arr</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">is_check_array_data</span> <span class="o">=</span> <span class="nx">arr</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>객체만이 생성자를 가진다. <code class="highlighter-rouge">null</code> 객체가 아니다. <code class="highlighter-rouge">null</code> 유형은 instanceof 키워드를 사용하여 데이터 체크가 불가능</li>
+  <li>이유는 instanceof 키워드는 객체만 판별이 가능!!!</li>
+  <li>객체가 아닌 것들(<code class="highlighter-rouge">null</code>, <code class="highlighter-rouge">undefined</code>)에는 사용할 수 없다.</li>
+  <li>instanceof 키워드 사용시 주의가 필요한 부분 : 원시데이터 유형(9, ‘문자’, false)은 올바르게 체크할 수 없다.</li>
+  <li>원시데이터는 값이기 때문에. instanceof의 조각이 아니기 때문에 쓸 수가 없다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
+	<span class="nx">str</span> <span class="o">=</span> <span class="s1">'java vs javascript'</span><span class="p">,</span>
+	<span class="nx">boo</span> <span class="o">=</span> <span class="o">!</span><span class="kc">false</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'num instanceof Number'</span><span class="p">,</span> <span class="nx">num</span> <span class="k">instanceof</span> <span class="nb">Number</span><span class="p">);</span>  <span class="c1">// false</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'num instanceof Number'</span><span class="p">,</span> <span class="nx">num</span> <span class="k">instanceof</span> <span class="nb">String</span><span class="p">);</span>  <span class="c1">// false</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'num instanceof Number'</span><span class="p">,</span> <span class="nx">num</span> <span class="k">instanceof</span> <span class="nb">Boolean</span><span class="p">);</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<h3 id="constructor-생성자">.constructor (생성자)</h3>
+<ul>
+  <li>자바스크립트에 존재하는 실체화된 모든 객체(instance Object)는 기본적으로 가지고 있는 속성이다.</li>
+  <li>{object}.constructor 속성(Property)</li>
+  <li>객체가 아닌 것들(null, undefined)에는 사용할 수 없다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">var</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+	<span class="nx">str</span> <span class="o">=</span> <span class="s1">'java vs javascript'</span><span class="p">,</span>
+	<span class="nx">boo</span> <span class="o">=</span> <span class="o">!</span><span class="kc">false</span><span class="p">,</span>
+	<span class="nx">fnc</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+	<span class="nx">arr</span> <span class="o">=</span> <span class="p">[],</span>
+	<span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'num.constructor:'</span><span class="p">,</span> <span class="nx">num</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function Number() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'num.constructor === Number:'</span><span class="p">,</span> <span class="nx">num</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Number</span> <span class="p">);</span> <span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'str.constructor:'</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function String() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'str.constructor === String:'</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">String</span> <span class="p">);</span> <span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'boo.constructor:'</span><span class="p">,</span> <span class="nx">boo</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function Boolean() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'str.constructor === Boolean:'</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Boolean</span> <span class="p">);</span> <span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'fnc.constructor:'</span><span class="p">,</span> <span class="nx">fnc</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function Function() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'fnc.constructor === Function:'</span><span class="p">,</span> <span class="nx">fnc</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Function</span> <span class="p">);</span> <span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'arr.constructor:'</span><span class="p">,</span> <span class="nx">arr</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function Array() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'arr.constructor === Array:'</span><span class="p">,</span> <span class="nx">arr</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Array</span> <span class="p">);</span> <span class="c1">// true</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'obj.constructor:'</span><span class="p">,</span> <span class="nx">obj</span><span class="p">.</span><span class="kd">constructor</span> <span class="p">);</span> <span class="c1">// function Object() { [native code] }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="s1">'arr.constructor === Object:'</span><span class="p">,</span> <span class="nx">obj</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">===</span> <span class="nb">Object</span> <span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="4-데이터-유형을-올바르게-체크해주는-isdatatype-헬퍼-함수">4. 데이터 유형을 올바르게 체크해주는 <code class="highlighter-rouge">isDataType()</code> 헬퍼 함수</h3>
+<ul>
+  <li><code class="highlighter-rouge">Object</code> 모든 객체의 조상이자, 객체 생성자 함수</li>
+  <li>생성자 함수의 특징은 함수 이름의 첫 글자는 대문자.</li>
+  <li>생성자 함수는 <code class="highlighter-rouge">.prototype</code> 속성을 가짐.</li>
+</ul>
+
+<h4 id="방법-1-objectprototype-원형-객체의-능력-중에는-tostring-함수가-있다">[방법 1] <code class="highlighter-rouge">Object.prototype</code> 원형 객체의 능력 중에는 <code class="highlighter-rouge">.toString()</code> 함수가 있다.</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">);</span> <span class="c1">// function</span>
+</code></pre></div></div>
+
+<h4 id="방법-2-objectprototypetostring-함수는-누군가-빌려쓸-수-있다-메소드-빌려쓰기-calldata">[방법 2] <code class="highlighter-rouge">Object.prototype.toString</code> 함수는 누군가 빌려쓸 수 있다. <code class="highlighter-rouge">메소드 빌려쓰기: call({data})</code></h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="nx">data</span><span class="p">});</span> <span class="c1">// [Object {Date}]</span>
+</code></pre></div></div>
+
+<h4 id="방법-3-문자열에서-해당-데이터-이름을-가진-것을-잘라내야slice-한다">[방법 3] 문자열에서 해당 데이터 이름을 가진 것을 잘라내야<code class="highlighter-rouge">slice</code> 한다.</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="nx">data</span><span class="p">}).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// Data</span>
+</code></pre></div></div>
+
+<h4 id="방법-4-잘라낸-문자열data을-소문자로-반환">[방법 4] 잘라낸 문자열(Data)을 <code class="highlighter-rouge">소문자</code>로 반환.</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="nx">data</span><span class="p">}).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">();</span> <span class="c1">// data</span>
+</code></pre></div></div>
+
+<h3 id="완성-데이터-유형을-올바르게-체크해주는-isdatatype-헬퍼-함수">[완성] 데이터 유형을 올바르게 체크해주는 <code class="highlighter-rouge">isDataType()</code> 헬퍼 함수</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">isDataType</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">data</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="nx">toLowerCase</span><span class="p">();</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/isDataType" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/isDataType" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/isDataType" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/isDataType" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/isDataType" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

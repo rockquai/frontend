@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>function</title>
-  <meta name="keywords" content="  함수 표현식 vs 함수 선언식  함수를 함수에 전달해 주기  인자값 체크 헬퍼 함수  함수를 반환하는 함수 Closures  유효범위 체인 Scope Chain  즉시실행함수 IIFE">
-  <meta name="description" content="  함수 표현식 vs 함수 선언식  함수를 함수에 전달해 주기  인자값 체크 헬퍼 함수  함수를 반환하는 함수 Closures  유효범위 체인 Scope Chain  즉시실행함수 IIFE">
+  <title>마법상자! function</title>
+  <meta name="keywords" content="  함수 표현식 vs 함수 선언식  함수를 함수에 전달해 주기  함수를 반환하는 함수 Closures  유효범위 체인 Scope Chain  즉시실행함수 IIFE">
+  <meta name="description" content="  함수 표현식 vs 함수 선언식  함수를 함수에 전달해 주기  함수를 반환하는 함수 Closures  유효범위 체인 Scope Chain  즉시실행함수 IIFE">
 
   <!-- CSS files -->
   <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
@@ -122,7 +122,7 @@
   
   "http://localhost:4000/img/../assets/javascript/js-03-Function.gif"
   
-  alt="function feature image">
+  alt="마법상자! function feature image">
 
   
 </div><!-- /.image-wrap -->
@@ -131,7 +131,7 @@
 
 <div id="post">
   <header class="post-header">
-    <h1 title="function">function</h1>
+    <h1 title="마법상자! function">마법상자! function</h1>
     <span class="post-meta">
       <span class="post-date">
         3 JAN 2017
@@ -152,7 +152,6 @@
     <ul>
   <li>함수 표현식 vs 함수 선언식</li>
   <li>함수를 함수에 전달해 주기</li>
-  <li>인자값 체크 헬퍼 함수</li>
   <li>함수를 반환하는 함수 <code class="highlighter-rouge">Closures</code></li>
   <li>유효범위 체인 <code class="highlighter-rouge">Scope Chain</code></li>
   <li>즉시실행함수 <code class="highlighter-rouge">IIFE</code></li>
@@ -160,20 +159,37 @@
 
 <!--more-->
 
-<h4 id="1-함수-표현식-vs-함수-선언식">1. 함수 표현식 vs 함수 선언식</h4>
+<h3 id="function">function</h3>
+<ul>
+  <li>함수는 명령문의 묶음이며 재샤옹 가능하다. (기능, 코드 묶음, 모듈)</li>
+  <li>자바스크립트 함수는 <code class="highlighter-rouge">객체</code>이다.</li>
+  <li><code class="highlighter-rouge">1급 객체(First Class Object)</code>이다.</li>
+  <li>함수는 객체이므로 속성을 가질 수 있다.</li>
+  <li>이유는 <code class="highlighter-rouge">객체</code>란? <code class="highlighter-rouge">속성의 집합</code>이기 때문이다.</li>
+  <li>함수는 유일하게 <code class="highlighter-rouge">호출 가능</code>(코드 재사용, 발동 시기(이벤트)를 조정)한 객체이다.</li>
+</ul>
+
+<h3 id="함수-표현식-vs-함수-선언식">함수 표현식 vs 함수 선언식</h3>
 <ul>
   <li><code class="highlighter-rouge">함수선언식</code>과 <code class="highlighter-rouge">함수표현식</code>은 함수호출는 크게 다르지 않다.</li>
   <li><code class="highlighter-rouge">함수표현식</code> <code class="highlighter-rouge">호이스팅(hoisting)</code> 현상 발생이 되어 오류가 발생이 될 수 있다.</li>
 </ul>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 함수 선언식</span>
-<span class="kd">function</span> <span class="err">함수이름</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-
-<span class="c1">/// 함수 표현식</span>
-<span class="kd">var</span> <span class="err">함수이름</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">{</span> <span class="p">...</span> <span class="p">)</span>
+<h4 id="1-함수를-정의하는-방법--선언식-함수-이름으로-정의하는-방법">1. 함수를 정의하는 방법 : 선언식 (함수 이름으로 정의하는 방법)</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">drinkMilk</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'밀크를 마시다'</span><span class="p">);</span>
+	<span class="c1">// return값이 없으면 기본값 undefined. (return을 쓰지 않으면 암묵적으로 undefined)</span>
+	<span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="2-함수를-함수에-전달해-주기">2. 함수를 함수에 전달해 주기</h4>
+<h4 id="2-함수-표현식을-변수에-참조하는-방법--표현식-함수-값리터럴을-변수에-할당하는-방법">2. 함수 표현식을 변수에 참조하는 방법 : 표현식 (함수 값(리터럴)을 변수에 할당하는 방법)</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">lookAt</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'무엇무엇을 응시하다.'</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="함수를-함수에-전달해-주기">함수를 함수에 전달해 주기</h4>
 <ul>
   <li>함수의 인자값으로 <code class="highlighter-rouge">함수</code>도 들어갈 수 있다 (함수를 가리키는 변수)</li>
 </ul>
@@ -229,28 +245,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'multiply'</span><span class="p">,</span> <span class="nx">minusResultResult</span><span class="p">);</span>
 </code></pre></div></div>
 
-<h4 id="3-type-체크-헬퍼함수">3. type 체크 헬퍼함수</h4>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// type 체크</span>
-<span class="kd">function</span> <span class="nx">checkargs</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">arg1</span> <span class="o">!==</span> <span class="nx">type</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">arg2</span> <span class="o">!==</span> <span class="nx">type</span> <span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">plus</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span> <span class="nx">checkargs</span><span class="p">(</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="s1">'number'</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-		<span class="c1">// console.log('타입이 맞습니다');</span>
-		<span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-	<span class="p">}</span>
-	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'타입이 틀립니다'</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'2'</span><span class="p">);</span> <span class="c1">// 타입이 틀린 거 같아요</span>
-</code></pre></div></div>
-
-<h4 id="4-함수를-반환하는-함수---closures">4. 함수를 반환하는 함수 - <em><a href="https://developer.mozilla.org/ko/docs/Web/js/Guide/Closures">Closures</a></em></h4>
+<h4 id="함수를-반환하는-함수---closures">함수를 반환하는 함수 - <em><a href="https://developer.mozilla.org/ko/docs/Web/js/Guide/Closures">Closures</a></em></h4>
 <ul>
   <li>함수를 반환하는 값을 변수에 참조하여 호출.</li>
 </ul>
@@ -267,7 +262,7 @@
 <span class="nx">a</span><span class="p">();</span>
 </code></pre></div></div>
 
-<h4 id="5-변수의-유효범위--변수의-접근은-어떻게-될까">5. 변수의 유효범위 : 변수의 접근은 어떻게 될까?</h4>
+<h4 id="변수의-유효범위--변수의-접근은-어떻게-될까">변수의 유효범위 : 변수의 접근은 어떻게 될까?</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">globalName</span> <span class="o">=</span> <span class="s1">'Kim'</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">setName</span><span class="p">(</span> <span class="nx">lastName</span> <span class="p">)</span> <span class="p">{</span>
@@ -279,7 +274,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">firstName</span><span class="p">);</span> <span class="c1">// firstName is not defined</span>
 </code></pre></div></div>
 
-<h4 id="6-유효범위-체인scope-chain">6. 유효범위 체인(Scope Chain)</h4>
+<h4 id="유효범위-체인scope-chain">유효범위 체인(Scope Chain)</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">setNames</span><span class="p">(</span><span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
 	<span class="kd">function</span> <span class="nx">printName</span><span class="p">()</span> <span class="p">{</span>
@@ -291,11 +286,24 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="7-iife즉시실행함수">7. IIFE(즉시실행함수)</h4>
+<h4 id="iife즉시실행함수">IIFE(즉시실행함수)</h4>
 <ul>
   <li><a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately Invoked Function Expression</a></li>
-  <li><code class="highlighter-rouge">캡슐화</code>가 가능하여 전역변수와 충돌을 피할 수 있다.</li>
+  <li>외부와 단절된 독립된 공간이 형성, <code class="highlighter-rouge">캡슐화</code>가 가능하여 전역변수와 충돌을 피할 수 있다.</li>
 </ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">+</span><span class="kd">function</span><span class="p">(){}();</span>
+
+<span class="o">~</span><span class="kd">function</span><span class="p">(){}();</span>
+
+<span class="o">!</span><span class="kd">function</span><span class="p">(){}();</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  
+<span class="p">}());</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">(){})();</span>
+</code></pre></div></div>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 	<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
@@ -335,7 +343,7 @@
 
 
         <footer>
-  &copy; 2017 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
 </footer>
 
       </div>

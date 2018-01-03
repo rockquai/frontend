@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Browser Object Model (BOM)</title>
+  <meta name="keywords" content="  window.screen          window.screen.height      window.screen.availHeight      window.screen.orientation        window.navigator          window.navigator...">
+  <meta name="description" content="  window.screen          window.screen.height      window.screen.availHeight      window.screen.orientation        window.navigator          window.navigator...">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/BOM">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Browser Object Model (BOM)">Browser Object Model (BOM)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        11 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li><code class="highlighter-rouge">window.screen</code>
+    <ul>
+      <li>window.screen.height</li>
+      <li>window.screen.availHeight</li>
+      <li>window.screen.orientation</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">window.navigator</code>
+    <ul>
+      <li>window.navigator.geolocation</li>
+      <li>window.navigator.platform</li>
+      <li>window.navigator.userAgent</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">window.location</code>
+    <ul>
+      <li>window.location.hash</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">window.devicePixelRatio</code></li>
+</ul>
+
+<!--more-->
+
+<h3 id="1-windowscreen-객체">1. window.screen 객체</h3>
+<ul>
+  <li>사용자의 스크린 화면의 대한 정보를 제공</li>
+  <li>화면의 가로/세로 폭 길이(px)</li>
+  <li>화면의 가용(Available) 가능한 실제 폭 길이(px)</li>
+</ul>
+
+<blockquote>
+  <p>전 세계 사용자의 스크린 가로 폭 평균치: 1366px (국내 평균 1920px)</p>
+</blockquote>
+
+<h4 id="현재-사용자의-화면screen에서-실제-사용가능하지-않은-공간의-폭은-얼마인가">현재 사용자의 화면(Screen)에서 실제 사용가능하지 않은 공간의 폭은 얼마인가?</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">full_height</span>    <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">avail_height</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">screen</span><span class="p">.</span><span class="nx">availHeight</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">unavail_height</span> <span class="o">=</span> <span class="nx">full_height</span> <span class="o">-</span> <span class="nx">avail_height</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'full_height - avail_height'</span><span class="p">,</span> <span class="nx">unavail_height</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="2-windownavigator-객체">2. window.navigator 객체</h3>
+<ul>
+  <li>웹 브라우저의 정보 제공
+    <ul>
+      <li>어떤 운영체제를 사용자가 쓰고 있나?</li>
+      <li>플러그인은 무엇 무엇을 사용하나?</li>
+      <li>웹 브라우저의 코드네임, 개발 엔진은 무엇인가?</li>
+    </ul>
+  </li>
+  <li>HTML5에 새로 추가
+    <ul>
+      <li>window.navigator.geolocation</li>
+      <li>window.localStorage</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="지도-기반-서비스를-황용하기-위한-geolocation-객체">지도 기반 서비스를 황용하기 위한 geolocation 객체</h3>
+
+<pre><code class="language-javasscript">var geo = navigator.geolocation;
+geo.getCurrentPosition(geoSuccess, geoFail);
+
+function geoSuccess(position) {
+	console.log('지도 위도/경도 좌표 가져오기 성공!');
+	console.dir('position:', position);
+	console.log('position.coords:', position.coords);
+	console.log('position.coords.accuracy:', position.coords.accuracy);
+	console.log('position.coords.latitude:', position.coords.latitude);
+	console.log('position.coords.longitude:', position.coords.longitude);
+}
+
+function geoFail(error) {
+	console.log('geoFail 함수: 지도 위도/경도 좌표 가져오기 실패!');
+}
+</code></pre>
+
+<h3 id="3-windowlocation-객체">3. window.location 객체</h3>
+<ul>
+  <li>현재 윈도우에 로드된 웹문서에 대한 정보를 제공</li>
+</ul>
+
+<h4 id="1초마다-urlhash-부분-바뀜">1초마다 (URL)hash 부분 바뀜</h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">_location</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">hashes</span> <span class="o">=</span> <span class="s1">'home about works contact'</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">' '</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">assignLocationHash</span><span class="p">(</span><span class="nx">hash</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">_location</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="s1">'!'</span> <span class="o">+</span> <span class="nx">hash</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">h_index</span> <span class="o">=</span> <span class="nx">hashes</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">item</span><span class="p">;</span> <span class="p">(</span><span class="nx">item</span><span class="o">=</span><span class="nx">hashes</span><span class="p">[</span><span class="o">--</span><span class="nx">h_index</span><span class="p">]);</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span> <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="c1">// console.log(item);</span>
+			<span class="nx">assignLocationHash</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+		<span class="p">};</span>
+	<span class="p">})(</span><span class="nx">item</span><span class="p">),</span> <span class="nx">h_index</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4-windowdevicepixelratio-객체">4. window.devicePixelRatio 객체</h3>
+<h4 id="기기의-픽셀-농도device-pixel-ratio-체크">기기의 픽셀 농도(Device Pixel Ratio) 체크</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">assignHtmlClass</span><span class="p">(</span><span class="nx">identifier</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">html</span> <span class="p">)</span> <span class="p">{</span> <span class="nx">html</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">;</span> <span class="p">}</span>
+	<span class="c1">// 문자 유형만 전달 가능</span>
+	<span class="k">if</span><span class="p">(</span> <span class="k">typeof</span> <span class="nx">identifier</span> <span class="o">!==</span> <span class="s1">'string'</span> <span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'문자 유형으로 전달인자를 설정해주세요.'</span><span class="p">);</span> <span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">existed_class</span> <span class="o">=</span> <span class="nx">html</span><span class="p">.</span><span class="nx">className</span> <span class="o">!==</span> <span class="s1">''</span><span class="p">;</span>
+	<span class="nx">html</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">existed_class</span> <span class="p">?</span> <span class="s1">' '</span> <span class="p">:</span> <span class="s1">''</span><span class="p">)</span> <span class="o">+</span> <span class="nx">identifier</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">detectDevicePixelRatio</span><span class="p">()</span> <span class="p">{</span>	
+	<span class="kd">var</span> <span class="nx">dpr</span> 		<span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">devicePixelRatio</span> <span class="o">||</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="kd">var</span> <span class="nx">is_retina</span>   <span class="o">=</span> <span class="nx">dpr</span> <span class="o">===</span> <span class="mi">2</span><span class="p">;</span>
+	<span class="kd">var</span> <span class="nx">is_retinaHD</span> <span class="o">=</span> <span class="nx">dpr</span> <span class="o">===</span> <span class="mi">3</span><span class="p">;</span>
+	<span class="nx">assignHtmlClass</span><span class="p">(</span> <span class="s1">'@'</span> <span class="o">+</span> <span class="s1">'x'</span> <span class="o">+</span> <span class="nx">dpr</span> <span class="p">);</span>
+	<span class="k">return</span> <span class="p">{</span>
+		<span class="s1">'retain'</span><span class="p">:</span> <span class="nx">is_retina</span><span class="p">,</span>
+		<span class="s1">'retinaHD'</span><span class="p">:</span> <span class="nx">is_retinaHD</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">detectDevicePixelRatio</span><span class="p">();</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/BOM" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/BOM" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/BOM" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/BOM" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/BOM" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

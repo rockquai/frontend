@@ -52,8 +52,6 @@ console.log(a); // 10
 console.log(b); // 5
 ```
 
----
-
 ### 2. Call by reference ( = 복합 데이터 유형(reference type))
 - 참조에 의한 호출, 값의 주소(메모리에서 값이 있는 곳을 가리키는 값)만 복사되는 자료형.
 - 함수 호출시 매개별수가 참조일 경우 참조를 전달

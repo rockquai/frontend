@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Object-oriented programming(OOP)</title>
+  <meta name="keywords" content="객체지향 프로그래밍(Object-oriented programming)  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일종의 설계도이다....">
+  <meta name="description" content="객체지향 프로그래밍(Object-oriented programming)  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일종의 설계도이다....">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/OOP">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Object-oriented programming(OOP)">Object-oriented programming(OOP)</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        6 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    7 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h2 id="객체지향-프로그래밍object-oriented-programming"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript">객체지향 프로그래밍(Object-oriented programming)</a></h2>
+<ul>
+  <li>객체 지향 프로그래밍(OOP)에서 <code class="highlighter-rouge">인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체</code>를 의미.</li>
+  <li><code class="highlighter-rouge">클래스</code>는 속성(property)과 행위(Method)로 구성된 일종의 <code class="highlighter-rouge">설계도</code>이다. OOP에서 객체는 클래스와 인스턴스를 포함한 개념이다.</li>
+  <li>추상화(Abstraction) : 복잡한 상속, 메서드, 객체의 속성의 결합은 반드시 현실 세계를 시뮬레이션할 수 있어야 한다.</li>
+  <li>캡슐화(Encapsulation) : 클래스는 해당 객체의 특성들만을 정의할 수 있고, 메서드는 그 메서드가 어떻게 실행되는지만 정의할 수 있다. (외부 접근 불가)</li>
+  <li>상속성(Inheritance) : 클래스는 다른 클래스로부터 특성들을 상속받을 수 있다.</li>
+  <li>다형성(Polymorphism) : 다른 클래스들이 같은 메서드나 속성으로 정의될 수 있다.</li>
+</ul>
+
+<!--more-->
+
+<h3 id="oop의-꽃은">OOP의 꽃은</h3>
+<ul>
+  <li>사람이 코드를 이해하기 쉽도록 읽고, 쓰고, 확장하는데 human readable.</li>
+  <li>핵심은 현실의 사물, 개념을 모델링할 수 있는 장점.</li>
+  <li>추상적인 개념을 모델링을 할 방법이 필요함 <br />
+=&gt; 예. 강아지, 고양이, 호랑이… =&gt; 동물! =&gt; 생명체. <br /></li>
+</ul>
+
+<h3 id="미션-가계부">[미션] 가계부</h3>
+<ul>
+  <li>함수단위 프로그래밍</li>
+  <li>객체지향 프로그래밍</li>
+</ul>
+
+<h4 id="함수단위-프로그래밍">함수단위 프로그래밍</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">amounts</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">deposit</span><span class="p">(</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span> <span class="nx">amount</span> <span class="o">+</span> <span class="nx">total</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Not enough balance'</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="nx">amounts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+	<span class="nx">names</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+	<span class="nx">total</span> <span class="o">+=</span> <span class="nx">amount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">print</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+	<span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">amounts</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="nx">result</span> <span class="o">+=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">amounts</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="s1">'입금'</span> <span class="p">:</span> <span class="s1">'출금'</span><span class="p">}</span><span class="s2">\t</span><span class="p">${</span><span class="nx">names</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="s2">\t</span><span class="p">${</span><span class="nx">amounts</span><span class="p">[</span><span class="nx">i</span><span class="p">]}</span><span class="s2">\n`</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nx">result</span> <span class="o">+=</span> <span class="s2">`잔액:\t</span><span class="p">${</span><span class="nx">total</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+	<span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">try</span> <span class="p">{</span>
+	<span class="nx">deposit</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'월급'</span><span class="p">);</span>
+	<span class="nx">deposit</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">'용돈'</span><span class="p">);</span>
+	<span class="nx">deposit</span><span class="p">(</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="s1">'보혐료'</span><span class="p">);</span>
+	<span class="nx">deposit</span><span class="p">(</span><span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="s1">'보혐료'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">print</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h4 id="객체지향-프로그래밍">객체지향 프로그래밍</h4>
+<ol>
+  <li><code class="highlighter-rouge">constructor(){}</code>  생성</li>
+  <li><code class="highlighter-rouge">constructor(){}</code> 안에서 <code class="highlighter-rouge">this.함수</code>를 선언하면 인스턴스 생성될 때마다 생성이 된다 <br />
+ㄴ&gt; 만약 인스턴스가 100라면 함수가 100개 된다. <code class="highlighter-rouge">메모리 낭비</code>. ==&gt; 공통적인 메소드 생성해야 한다.<br /></li>
+  <li>인스턴스가 없는 <code class="highlighter-rouge">클래스속성</code> 혹은 <code class="highlighter-rouge">스태틱속성</code>이라고 부른다. 스태틱 키워드를 작성하여 스태틱 메소드를 작성할 수 있다.</li>
+</ol>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">printAll</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">AccoutBook</span> <span class="p">{</span>
+	<span class="c1">// 내역들, 이름, 입금/출금하기, 출력하기</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">author</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">author</span> <span class="o">=</span> <span class="nx">author</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">list</span> <span class="o">=</span> <span class="p">[];</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="c1">// constructor 인에 있는 this는 생성하는 인스턴스.</span>
+		<span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// 생성되는 인스턴스를 배열로 담아둔다.</span>
+	<span class="p">}</span>
+
+	<span class="nx">deposit</span><span class="p">(</span><span class="nx">comment</span><span class="p">,</span> <span class="nx">amount</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">total</span> <span class="o">+</span> <span class="nx">amount</span>  <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'Not enough balance'</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">total</span> <span class="o">+=</span> <span class="nx">amount</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+			<span class="na">comment</span><span class="p">:</span> <span class="nx">comment</span><span class="p">,</span>
+			<span class="na">amount</span><span class="p">:</span> <span class="nx">amount</span>
+		<span class="p">});</span>
+	<span class="p">}</span>
+
+	<span class="nx">print</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s2">`=== </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2"> by </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">author</span><span class="p">}</span><span class="s2"> ===\n`</span><span class="p">;</span>
+		<span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">list</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+			<span class="nx">result</span> <span class="o">+=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">?</span> <span class="s1">'출금'</span> <span class="p">:</span> <span class="s1">'입금'</span><span class="p">}</span><span class="s2">\t</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">comment</span><span class="p">}</span><span class="s2">\t</span><span class="p">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">amount</span><span class="p">}</span><span class="s2">원\n`</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="nx">result</span> <span class="o">+=</span> <span class="s2">`=== </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">total</span><span class="p">}</span><span class="s2"> ===\n`</span><span class="p">;</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 인스턴스가 없이 클래스를 바로 호출할 수 있는 것을 클래식속성(=스태틱속성)</span>
+<span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">printAll</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+	<span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">accountBook</span> <span class="o">=</span> <span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+		<span class="nx">accountBook</span><span class="p">.</span><span class="nx">print</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">ac1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AccoutBook</span><span class="p">(</span><span class="s1">'장부1'</span><span class="p">,</span> <span class="s1">'A군'</span><span class="p">);</span>
+<span class="nx">ac1</span><span class="p">.</span><span class="nx">deposit</span><span class="p">(</span><span class="s1">'월급'</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<span class="nx">ac1</span><span class="p">.</span><span class="nx">deposit</span><span class="p">(</span><span class="s1">'월급'</span><span class="p">,</span> <span class="o">-</span><span class="mi">150</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">ac2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AccoutBook</span><span class="p">(</span><span class="s1">'장부2'</span><span class="p">,</span> <span class="s1">'B군'</span><span class="p">);</span>
+
+<span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">printAll</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h4 id="상속성inheritance--다형성polymorphism">상속성(Inheritance) &amp; 다형성(Polymorphism)</h4>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Life</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="nx">Animal</span> <span class="kd">extends</span> <span class="nx">Life</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="nx">Dog</span> <span class="kd">extends</span> <span class="nx">Animal</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">Dog - Animal - Life</code> 설계도의 속성들이 상속, 덮어쓰기됨!</li>
+  <li><code class="highlighter-rouge">var dog1 = new Dog();</code> dog1은 Dog, Animal, Life의 instance methods, property를 모두 상속을 받음.</li>
+  <li>메소드를 작성하여 인스턴스끼리 공유</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Animal</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="nx">speak</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`I am an animal, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="nx">smile</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`haha`</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Dog</span> <span class="kd">extends</span> <span class="nx">Animal</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">race</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// this.name = name;</span>
+		<span class="c1">// this.age = age;</span>
+
+		<span class="c1">// Dog가 상속받고 있는 `Animal클래스`에 생성자를 이용하고 싶을 때는 예약어 `super()` 사용.  </span>
+		<span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">race</span> <span class="o">=</span> <span class="nx">race</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// `speak()` 자체를 덮여쓸 수 있다.(상속받는 속성, 메소드를 덮여쓸 수 있다.) =&gt; `메소드 오버라이딩,(method overriding)`이라고 부른다</span>
+	<span class="nx">speak</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">super</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>  <span class="c1">// 부모 클래스의 메소드를 호출 할 수도 있다.</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Bark! bark!, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Cat</span> <span class="kd">extends</span> <span class="nx">Animal</span> <span class="p">{</span>
+	<span class="c1">// constructor 생략하면 조상 클래스인 constructor가 적용이 된다</span>
+	<span class="nx">speak</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">super</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`meow! meow!, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">animals</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="k">new</span> <span class="nx">Dog</span><span class="p">(</span><span class="s1">'멍멍이'</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">'포메라니안'</span><span class="p">),</span>
+	<span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="s1">'야옹이'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">animals</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="nx">animals</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+	<span class="c1">// animal의 공통 메소드는 speak(), smile()</span>
+	<span class="nx">animal</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
+	<span class="nx">animal</span><span class="p">.</span><span class="nx">smile</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a href="https://workshop.benzen.io/">출처:Benzen Workshop-https://workshop.benzen.io/</a></p>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/OOP" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/OOP" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/OOP" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/OOP" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/OOP" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

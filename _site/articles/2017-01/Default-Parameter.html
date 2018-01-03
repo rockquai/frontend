@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[ES6] default parameter</title>
+  <meta name="keywords" content="  기본 함수 매개변수(default function parameter)를 사용하면 값이 없거나 undefined가 전달될 경우 매개변수를 기본값으로 초기화할 수 있다.">
+  <meta name="description" content="  기본 함수 매개변수(default function parameter)를 사용하면 값이 없거나 undefined가 전달될 경우 매개변수를 기본값으로 초기화할 수 있다.">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/Default-Parameter">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="[ES6] default parameter">[ES6] default parameter</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        18 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>기본 함수 매개변수(default function parameter)를 사용하면 값이 없거나 <code class="highlighter-rouge">undefined</code>가 전달될 경우 매개변수를 기본값으로 초기화할 수 있다.</li>
+</ul>
+
+<!--more-->
+
+<h3 id="default-parameter"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters">default parameter</a></h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ES5</span>
+<span class="kd">function</span> <span class="nx">logName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="o">=</span> <span class="nx">mane</span> <span class="o">||</span> <span class="s1">'claire'</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logName</span><span class="p">();</span> <span class="c1">// name = undefined || 'claire' =&gt;  'claire'</span>
+<span class="nx">logName</span><span class="p">(</span><span class="s1">'ken'</span><span class="p">);</span> <span class="c1">// 'ken'</span>
+
+<span class="c1">// ES5</span>
+<span class="kd">function</span> <span class="nx">logNumber1</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">num</span> <span class="o">=</span> <span class="nx">num</span> <span class="o">||</span> <span class="mi">123</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logNumber1</span><span class="p">();</span> <span class="c1">// 124</span>
+<span class="nx">logNumber1</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 123 =&gt; 의도한 값을 '0'인데 '0'이 거짓스런값이므로 123이 나온다</span>
+<span class="nx">logNumber1</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000</span>
+
+<span class="c1">// ES5</span>
+<span class="kd">function</span> <span class="nx">logNumber2</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">num</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logNumber2</span><span class="p">();</span> <span class="c1">// 124</span>
+<span class="nx">logNumber2</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 0</span>
+<span class="nx">logNumber2</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000</span>
+
+<span class="c1">//ES6</span>
+<span class="kd">const</span> <span class="nx">logName2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'claire'</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logName2</span><span class="p">();</span> <span class="c1">// claire</span>
+<span class="nx">logName2</span><span class="p">(</span><span class="s1">'ken'</span><span class="p">)</span> <span class="c1">//ken</span>
+
+<span class="c1">// ES6</span>
+<span class="kd">const</span> <span class="nx">logNumber3</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span> <span class="o">=</span> <span class="mi">123</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logNumber3</span><span class="p">();</span> <span class="c1">// 124</span>
+<span class="nx">logNumber3</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 0</span>
+<span class="nx">logNumber3</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000</span>
+
+<span class="c1">// ES6</span>
+<span class="kd">const</span> <span class="nx">getNumber</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'aaa'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">123</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">logNumbers</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">getNumber</span><span class="p">()</span> <span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">logNumbers</span><span class="p">();</span> <span class="c1">// 'aaa', 123 =&gt; 인자가 undefined일 때만 getNumber() 실행이 된다</span>
+<span class="nx">logNumbers</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/Default-Parameter" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/Default-Parameter" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/Default-Parameter" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/Default-Parameter" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/Default-Parameter" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

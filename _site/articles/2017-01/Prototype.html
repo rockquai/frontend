@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Prototypes</title>
+  <meta name="keywords" content="Prototypes  Prototypes이란 자바스크립트의 객체 지향적 활용에 있어서 가장 중요한 개념  객체에 걸린 링크  window객체는 객체에 걸린 링크가 있는데 객체에 걸린 링크를 프로토타입이라고 한다.  스코프 체이닝을 통해 값을 찾으러 올라가다가 프로토타입에도 없을 경...">
+  <meta name="description" content="Prototypes  Prototypes이란 자바스크립트의 객체 지향적 활용에 있어서 가장 중요한 개념  객체에 걸린 링크  window객체는 객체에 걸린 링크가 있는데 객체에 걸린 링크를 프로토타입이라고 한다.  스코프 체이닝을 통해 값을 찾으러 올라가다가 프로토타입에도 없을 경...">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/Prototype">
+  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="Prototypes">Prototypes</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        5 JAN 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <h3 id="prototypes">Prototypes</h3>
+<ul>
+  <li><code class="highlighter-rouge">Prototypes이란</code> 자바스크립트의 객체 지향적 활용에 있어서 가장 중요한 개념</li>
+  <li>객체에 걸린 링크</li>
+  <li>window객체는 객체에 걸린 링크가 있는데 객체에 걸린 링크를 프로토타입이라고 한다.</li>
+  <li>스코프 체이닝을 통해 값을 찾으러 올라가다가 프로토타입에도 없을 경우에 에러가 난다.</li>
+  <li>window객체는 객체에 걸린 링크가 있는데 객체에 걸린 링크를 프로토타입이라고 한다.</li>
+  <li>콘솔에 객체를 찍어보면 <code class="highlighter-rouge">__proto__</code>라고 링크가 걸려있는 객체가 나오는데 이 안에 링크가 걸려있는 객체 리스트가 나온다. <code class="highlighter-rouge">지양</code></li>
+  <li>자바스크립트에는 클래스 개념이 없다. (ES6에도 클래스가 없다.)</li>
+</ul>
+
+<!--more-->
+
+<h4 id="constructor">Constructor</h4>
+<ul>
+  <li>Objcect, String, Array, Function, Number</li>
+  <li><code class="highlighter-rouge">Function</code> —-&gt; (.prototype)  <code class="highlighter-rouge">객체</code></li>
+  <li><code class="highlighter-rouge">Function</code> (.constructor) &lt;—-  <code class="highlighter-rouge">객체</code></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function : Function을 만드는 Constructor</span>
+<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apply</span>
+<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">call</span>
+<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">bind</span>
+</code></pre></div></div>
+
+<h4 id="이렇게-사용하지-않는다">이렇게 사용하지 않는다!</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">fn</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Function</span><span class="p">(</span><span class="s1">'console.log(3);'</span><span class="p">);</span>
+<span class="nx">fn</span><span class="p">();</span> <span class="c1">// 3</span>
+
+<span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// 3개의 아이템이 들어가면 값은 undefined.</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">arr</span><span class="p">);</span> <span class="c1">// 0bjcect</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">arr</span><span class="p">));</span> <span class="c1">// Array type 체크할 때 사용. boolean으로 나온다.</span>
+
+<span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">str2</span> <span class="o">=</span> <span class="s1">'ttt'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">str</span><span class="p">);</span> <span class="c1">// objcect</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">str2</span><span class="p">);</span> <span class="c1">// string</span>
+</code></pre></div></div>
+
+<h5 id="constructor-instanceof-protoype-chain"><code class="highlighter-rouge">constructor</code>, <code class="highlighter-rouge">instanceof</code>, <code class="highlighter-rouge">Protoype Chain</code></h5>
+<ul>
+  <li>Prototype Chain을 이용해서 OOP 사용. <code class="highlighter-rouge">Prototypal Inheritance</code></li>
+  <li>만약에 Function 매소드 중에 bind가 없으면 Protoype Chain를 통해서 bind 매소드를 사용할 수 없다.
+상속이라는 말이 개념은 없다. 위임이라는 개념이 맞다 <code class="highlighter-rouge">Behavior Delegation</code></li>
+  <li>Person.prototype -&gt; Function.prototype -&gt; Objcect.prototype -&gt; null</li>
+  <li><code class="highlighter-rouge">__proto__</code> : prototype link</li>
+</ul>
+
+<blockquote>
+  <p><a href="https://javascriptweblog.wordpress.com/2010/12/22/delegation-vs-inheritance-in-javascript/">면접문제: Behavior Delegation - https://javascriptweblog.wordpress.com/2010/12/22/delegation-vs-inheritance-in-javascript/</a></p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ex1. constructor, instanceof</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'claire'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="kd">constructor</span><span class="p">);</span> <span class="c1">// Preson</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span> <span class="k">instanceof</span> <span class="nx">Person</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="p">})();</span>
+
+<span class="c1">// ex2. Protoype Chain</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>    
+    <span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">logName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// this ==&gt; claire</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'claire'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">);</span> <span class="c1">// __proto__ : 지양</span>
+
+    <span class="nx">name</span><span class="p">.</span><span class="nx">logName</span><span class="p">();</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/Prototype" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/Prototype" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/Prototype" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/Prototype" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/Prototype" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
