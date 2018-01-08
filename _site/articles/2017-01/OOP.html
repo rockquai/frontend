@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Object-oriented programming(OOP)</title>
-  <meta name="keywords" content="객체지향 프로그래밍(Object-oriented programming)  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일종의 설계도이다....">
-  <meta name="description" content="객체지향 프로그래밍(Object-oriented programming)  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일종의 설계도이다....">
+  <meta name="keywords" content="  출처:Benzen Workshop-https://workshop.benzen.io/  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일...">
+  <meta name="description" content="  출처:Benzen Workshop-https://workshop.benzen.io/  객체 지향 프로그래밍(OOP)에서 인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체를 의미.  클래스는 속성(property)과 행위(Method)로 구성된 일...">
 
   <!-- CSS files -->
   <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://localhost:4000/css/main.css">
 
   <link rel="canonical" href="http://localhost:4000/articles/2017-01/OOP">
-  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
 
   <!-- Icons -->
   <!-- 16x16 -->
@@ -139,8 +139,8 @@
   </header>
 
   <article class="post-content">
-    <h2 id="객체지향-프로그래밍object-oriented-programming"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript">객체지향 프로그래밍(Object-oriented programming)</a></h2>
-<ul>
+    <ul>
+  <li><a href="https://workshop.benzen.io/">출처:Benzen Workshop-https://workshop.benzen.io/</a></li>
   <li>객체 지향 프로그래밍(OOP)에서 <code class="highlighter-rouge">인스턴스(instance)는 해당 클래스의 구조로 컴퓨터 저장공간에서 할당된 실체</code>를 의미.</li>
   <li><code class="highlighter-rouge">클래스</code>는 속성(property)과 행위(Method)로 구성된 일종의 <code class="highlighter-rouge">설계도</code>이다. OOP에서 객체는 클래스와 인스턴스를 포함한 개념이다.</li>
   <li>추상화(Abstraction) : 복잡한 상속, 메서드, 객체의 속성의 결합은 반드시 현실 세계를 시뮬레이션할 수 있어야 한다.</li>
@@ -150,6 +150,8 @@
 </ul>
 
 <!--more-->
+
+<h2 id="객체지향-프로그래밍object-oriented-programming"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript">객체지향 프로그래밍(Object-oriented programming)</a></h2>
 
 <h3 id="oop의-꽃은">OOP의 꽃은</h3>
 <ul>
@@ -206,8 +208,8 @@
 <ol>
   <li><code class="highlighter-rouge">constructor(){}</code>  생성</li>
   <li><code class="highlighter-rouge">constructor(){}</code> 안에서 <code class="highlighter-rouge">this.함수</code>를 선언하면 인스턴스 생성될 때마다 생성이 된다 <br />
-ㄴ&gt; 만약 인스턴스가 100라면 함수가 100개 된다. <code class="highlighter-rouge">메모리 낭비</code>. ==&gt; 공통적인 메소드 생성해야 한다.<br /></li>
-  <li>인스턴스가 없는 <code class="highlighter-rouge">클래스속성</code> 혹은 <code class="highlighter-rouge">스태틱속성</code>이라고 부른다. 스태틱 키워드를 작성하여 스태틱 메소드를 작성할 수 있다.</li>
+ㄴ&gt; 만약 인스턴스가 100라면 함수가 100개 된다. <code class="highlighter-rouge">메모리 낭비</code>. ==&gt; 공통적인 메서드 생성해야 한다.<br /></li>
+  <li>인스턴스가 없는 <code class="highlighter-rouge">클래스속성</code> 혹은 <code class="highlighter-rouge">스태틱속성</code>이라고 부른다. 스태틱 키워드를 작성하여 스태틱 메서드를 작성할 수 있다.</li>
 </ol>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">AccoutBook</span><span class="p">.</span><span class="nx">instances</span> <span class="o">=</span> <span class="p">[];</span>
@@ -273,7 +275,7 @@
 <ul>
   <li><code class="highlighter-rouge">Dog - Animal - Life</code> 설계도의 속성들이 상속, 덮어쓰기됨!</li>
   <li><code class="highlighter-rouge">var dog1 = new Dog();</code> dog1은 Dog, Animal, Life의 instance methods, property를 모두 상속을 받음.</li>
-  <li>메소드를 작성하여 인스턴스끼리 공유</li>
+  <li>메서드를 작성하여 인스턴스끼리 공유</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Animal</span> <span class="p">{</span>
@@ -299,9 +301,9 @@
 		<span class="k">this</span><span class="p">.</span><span class="nx">race</span> <span class="o">=</span> <span class="nx">race</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="c1">// `speak()` 자체를 덮여쓸 수 있다.(상속받는 속성, 메소드를 덮여쓸 수 있다.) =&gt; `메소드 오버라이딩,(method overriding)`이라고 부른다</span>
+	<span class="c1">// `speak()` 자체를 덮여쓸 수 있다.(상속받는 속성, 메서드를 덮여쓸 수 있다.) =&gt; `메서드 오버라이딩,(method overriding)`이라고 부른다</span>
 	<span class="nx">speak</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">super</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>  <span class="c1">// 부모 클래스의 메소드를 호출 할 수도 있다.</span>
+		<span class="k">super</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>  <span class="c1">// 부모 클래스의 메서드를 호출 할 수도 있다.</span>
 		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Bark! bark!, </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 	<span class="p">}</span>
 <span class="p">}</span>
@@ -321,13 +323,11 @@
 
 <span class="k">for</span> <span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">animals</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
 	<span class="kd">var</span> <span class="nx">animal</span> <span class="o">=</span> <span class="nx">animals</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-	<span class="c1">// animal의 공통 메소드는 speak(), smile()</span>
+	<span class="c1">// animal의 공통 메서드는 speak(), smile()</span>
 	<span class="nx">animal</span><span class="p">.</span><span class="nx">speak</span><span class="p">();</span>
 	<span class="nx">animal</span><span class="p">.</span><span class="nx">smile</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
-
-<p><a href="https://workshop.benzen.io/">출처:Benzen Workshop-https://workshop.benzen.io/</a></p>
 
   </article>
 </div>

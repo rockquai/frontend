@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Node.js</title>
-  <meta name="keywords" content="  Node.js는 확장성 있는 네트워크 애플리케이션(특히 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다. 작성 언어로 자바스크립트를 활용하며 Non-blocking I/O와 단일 스레드 이벤트 루프를 통한 높은 처리 성능을 가지고 있다.  내장 HTTP 서버 라이브러리를 포...">
-  <meta name="description" content="  Node.js는 확장성 있는 네트워크 애플리케이션(특히 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다. 작성 언어로 자바스크립트를 활용하며 Non-blocking I/O와 단일 스레드 이벤트 루프를 통한 높은 처리 성능을 가지고 있다.  내장 HTTP 서버 라이브러리를 포...">
+  <title>Express - Node.js 웹 애플리케이션 프레임워크</title>
+  <meta name="keywords" content="  Node.js를 위한 빠르고 개방적인 간결한 웹 프레임워크  프로젝트에 대한 설정을 package.json 안에 의존하고 있는 외부 라이브러리 정보를 담고 있는 문서. (JSON형식)  node_modules 폴더가 설치">
+  <meta name="description" content="  Node.js를 위한 빠르고 개방적인 간결한 웹 프레임워크  프로젝트에 대한 설정을 package.json 안에 의존하고 있는 외부 라이브러리 정보를 담고 있는 문서. (JSON형식)  node_modules 폴더가 설치">
 
   <!-- CSS files -->
   <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://localhost:4000/css/main.css">
 
-  <link rel="canonical" href="http://localhost:4000/articles/2017-01/Node">
-  <link rel="alternate" type="application/rss+xml" title="Claire Blog" href="http://localhost:4000/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/articles/2017-01/Node02">
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
 
   <!-- Icons -->
   <!-- 16x16 -->
@@ -121,7 +121,7 @@
 
 <div id="post">
   <header class="post-header">
-    <h1 title="Node.js">Node.js</h1>
+    <h1 title="Express - Node.js 웹 애플리케이션 프레임워크">Express - Node.js 웹 애플리케이션 프레임워크</h1>
     <span class="post-meta">
       <span class="post-date">
         19 JAN 2017
@@ -140,32 +140,28 @@
 
   <article class="post-content">
     <ul>
-  <li>Node.js는 확장성 있는 네트워크 애플리케이션(특히 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다. 작성 언어로 자바스크립트를 활용하며 Non-blocking I/O와 단일 스레드 이벤트 루프를 통한 높은 처리 성능을 가지고 있다.</li>
-  <li>내장 HTTP 서버 라이브러리를 포함하고 있어 웹 서버에서 아파치 등의 별도의 소프트웨어 없이 동작하는 것이 가능하며 이를 통해 웹 서버의 동작에 있어 더 많은 통제를 가능케 한다.</li>
+  <li>Node.js를 위한 빠르고 개방적인 간결한 웹 프레임워크</li>
+  <li>프로젝트에 대한 설정을 package.json 안에 의존하고 있는 외부 라이브러리 정보를 담고 있는 문서. (JSON형식)</li>
+  <li><code class="highlighter-rouge">node_modules</code> 폴더가 설치</li>
 </ul>
 
 <!--more-->
 
-<h3 id="nodejs"><a href="https://ko.wikipedia.org/wiki/Node.js">Node.js</a></h3>
+<hr />
 
-<h4 id="npm-project-start">npm project start</h4>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm init
-</code></pre></div></div>
-
-<blockquote>
-  <p>package.json 파일이 생성이 된다.</p>
-</blockquote>
-
-<h4 id="express---nodejs-웹-애플리케이션-프레임워크">Express - Node.js 웹 애플리케이션 프레임워크</h4>
+<h4 id="express-설치">Express 설치</h4>
 <ul>
   <li>[express node install] (http://expressjs.com/en/starter/installing.html)</li>
-  <li><code class="highlighter-rouge">npm</code>은 프로젝트에 대한 설정을 <code class="highlighter-rouge">package.json</code> 안에 의존하고 있는 외부 라이브러리 정보를 담고 있는 문서. (JSON형식)</li>
-  <li><code class="highlighter-rouge">node_modules</code> 폴더가 설치</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install express --save
-</code></pre></div></div>
+<pre><code class="language-CLI">$ npm install express
+</code></pre>
+
+<h4 id="자동으로-파일-감지-nodemon">자동으로 파일 감지 <code class="highlighter-rouge">nodemon</code></h4>
+
+<pre><code class="language-CLI">$ npm install nodemon  // 설치
+$ nodemon 파일이름 // 실행
+</code></pre>
 
 <h4 id="특정한-포트로-서버-띄우기">특정한 포트로 서버 띄우기</h4>
 
@@ -262,19 +258,19 @@
   <h6>Share on: </h6>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/Node" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-01/Node02" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/Node" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-01/Node02" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/Node" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-01/Node02" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
     <li>
-      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/Node" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-01/Node02" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
     </li>
     <li>
-      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/Node" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-01/Node02" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
     </li>
   </ul>
 </div><!-- end share-buttons -->
