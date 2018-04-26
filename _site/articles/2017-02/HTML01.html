@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML(HyperText Markup Language) - 1</title>
+  <meta name="keywords" content="  HTML 구조  DTD(Document Type Definition) 선언  meta          비표준 IE 조건부 주석문      언어 인코딩 설정      타이틀      모바일 최적화 환경 설정      검색 엔진 최적화 SEO (Search Engine Optimi...">
+  <meta name="description" content="  HTML 구조  DTD(Document Type Definition) 선언  meta          비표준 IE 조건부 주석문      언어 인코딩 설정      타이틀      모바일 최적화 환경 설정      검색 엔진 최적화 SEO (Search Engine Optimi...">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-02/HTML01">
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="HTML(HyperText Markup Language) - 1">HTML(HyperText Markup Language) - 1</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        1 FEB 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>HTML 구조</li>
+  <li>DTD(Document Type Definition) 선언</li>
+  <li>meta
+    <ul>
+      <li>비표준 IE 조건부 주석문</li>
+      <li>언어 인코딩 설정</li>
+      <li>타이틀</li>
+      <li>모바일 최적화 환경 설정</li>
+      <li>검색 엔진 최적화 SEO (Search Engine Optimization)</li>
+      <li>MIME Type (Multipurpose Internet Mail Extensions)</li>
+    </ul>
+  </li>
+  <li>HTML 목록(Ordered List, Unordered List, Definition List)</li>
+  <li>HTML 폼</li>
+  <li>HTML5 MARKUP</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h3 id="html-구조">HTML 구조</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="c">&lt;!-- HTML5 이전에 사용되던 코드 --&gt;</span>
+<span class="c">&lt;!-- &lt;meta http-equiv="Content-Type" content="text/html;charset=UTF-8"&gt; --&gt;</span>
+<span class="c">&lt;!-- HTML5에서는 아래와 같이 단축된 코드를 사용한다. --&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>웹 문서의 제목<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="html5-dtd-선언">HTML5 DTD 선언</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+  <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko-KR"</span> <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>...<span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">문서 유형 정의(DTD, Document Type Definition)</code>를 문서 최상단에 입력하여 웹 브라우저에게 현재 문서가 웹 표준 문서임을 알린다. (표준 모드로 동작)</li>
+  <li><code class="highlighter-rouge">lang</code> : 언어 설정. 여러번 사용 가능하며, 스크린 리더기가 해당 lang에 맞게 읽는다</li>
+  <li><code class="highlighter-rouge">dir</code> : 문서를 읽는 방향 설정 (생략 가능)</li>
+  <li><code class="highlighter-rouge">ltr</code>: Left to Right (왼쪽에서 오른쪽-기본값)</li>
+  <li><code class="highlighter-rouge">rtl</code>: Right to Left (오른쪽에서 왼쪽)</li>
+  <li>DTD 위에 주석이 올 경우 발생하는 문제점: DTD 위에 코드 또는 주석이 존재할 경우 올바르지 않은 DTD로 간주하여 웹 브라우저는 비표준 모드로 동작하게 됨을 알 수 있다. 고로 DTD 위에는 어떤 텍스트, 주석, 코드 등을 사용하지 않는 것이 좋다</li>
+  <li>DTD 없는 문서는 <code class="highlighter-rouge">쿼크 모드(Quirks mode)</code> 비표준으로 인식. ie5.0이전 브라우저 인식</li>
+</ul>
+
+<hr />
+
+<h3 id="비표준-ie-조건부-주석문">비표준 IE 조건부 주석문</h3>
+<ul>
+  <li>IE6 ~ IE9 까지만 해석 가능</li>
+  <li>특정 조건에서 주석이 아니라, 코드문으로 해석됨</li>
+  <li>CSS 브라우저 핵이 아닌, 필터링 방법에 사용. IE 브라우저라면? 코드로 해석해서 처리</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--[if IE 6]&gt;&lt;html lang="ko-KR" class="ie6"&gt;&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if IE 7]&gt;&lt;html lang="ko-KR" class="ie7"&gt;&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if IE 8]&gt;&lt;html lang="ko-KR" class="ie8"&gt;&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if IE 9]&gt;&lt;html lang="ko-KR" class="ie9"&gt;&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if !IE]&gt;&lt;!--&gt;</span><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko-KR"</span><span class="nt">&gt;</span><span class="c">&lt;!--&lt;![endif]--&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="meta">meta</h3>
+<ul>
+  <li>meta 요소는 브라우저 또는 검색 로봇에 정보를 전달</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+   <span class="c">&lt;!-- 비표준 IE 호환성 보기 모드 설정 --&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=Edge"</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- 언어 인코딩 설정 --&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;title&gt;</span> 웹페이지 제목 <span class="nt">&lt;/title&gt;</span>
+   <span class="c">&lt;!-- 모바일 최적화 환경 설정 --&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- 검색엔진 최적화 SEO --&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"프론트엔드 개발을 위한 코딩 가이드입니다."</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"프론트엔드,개발,html,css,javascript,sass,접근성"</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"제작자"</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- 외부 스타일 문서 파일을 호출(링크, 연결) --&gt;</span>
+   <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"./css/style.css"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<h4 id="비표준-ie-호환성-보기-모드-설정">비표준 IE 호환성 보기 모드 설정</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=Edge"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>사용자가 사용하는 IE 브라우저 버전으로 렌더링. (이 코드를 쓰지 않으면 IE7로 랜더링.)</li>
+  <li><code class="highlighter-rouge">http-equiv</code> 서버의 셋팅 값. 클라이언트 셋팅 값</li>
+  <li><code class="highlighter-rouge">X</code>  미지수 X. 비표준을 나타내며, IE 브라우저 때문에 사용 ‘X’를 사용한다. ‘X’를 쓰지 않으면 사용자 브라우저가 IE9, 10, 11을 사용해도 IE7모드로 동작하게 된다</li>
+</ul>
+
+<h4 id="언어-인코딩-설정">언어 인코딩 설정</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">EUC-KR</code> 한국 전용 (다른 언어 인식 못함)</li>
+  <li><code class="highlighter-rouge">UTF-8</code> 유니코드 8bit (모든 언어 인식)</li>
+</ul>
+
+<h4 id="title">title</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;title&gt;</span> 웹페이지 제목 <span class="nt">&lt;/title&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>웹브라우저의 제목줄에 표시</li>
+  <li>SEO(검색 엔진 최적화, Search Engine Optimization) 용이</li>
+  <li>웹접근성 측면에서 좋으며, 스크린 리더가 제일 먼저 읽는다</li>
+  <li>유니크하게 작성 예) 공지사항 게시물의 제목이 들어가면 제일 좋다 (한 사이트에 2번이상 나오면 좋지 않다)</li>
+</ul>
+
+<h4 id="모바일-최적화-환경-설정">모바일 최적화 환경 설정</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>데스크탑, 모바일, 모바일 패드 등 최적화</li>
+</ul>
+
+<h4 id="검색-엔진-최적화-seosearch-engine-optimization">검색 엔진 최적화 SEO(Search Engine Optimization)</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"description"</span> <span class="na">content=</span><span class="s">"프론트엔드 개발을 위한 코딩 가이드입니다."</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"keywords"</span> <span class="na">content=</span><span class="s">"프론트엔드,개발,html,css,javascript,sass,접근성"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"author"</span> <span class="na">content=</span><span class="s">"제작자"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">description</code> 200 ~ 300자 내외 작성</li>
+  <li><code class="highlighter-rouge">keywords</code> 10개 내외 작성</li>
+</ul>
+
+<h4 id="mime-type-multipurpose-internet-mail-extensions">MIME Type (Multipurpose Internet Mail Extensions)</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> <span class="o">...</span> <span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span> <span class="p">...</span> <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>type 생략 가능</li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-02/HTML01" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-02/HTML01" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-02/HTML01" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-02/HTML01" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-02/HTML01" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[Sass] Nested, &, @extend, !optional, %</title>
+  <meta name="keywords" content="  주석(Comments)  중첩 규칙(Nested Rules)  중첩 속성(Nested Properties)  부모, 참조 선택자 (&amp;)  RWD, 부모 참조 선택자(&amp;)와 미디어쿼리  선택자 상속(Selector Inheritance, @extend)  선택자 상...">
+  <meta name="description" content="  주석(Comments)  중첩 규칙(Nested Rules)  중첩 속성(Nested Properties)  부모, 참조 선택자 (&amp;)  RWD, 부모 참조 선택자(&amp;)와 미디어쿼리  선택자 상속(Selector Inheritance, @extend)  선택자 상...">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-02/learn-Sass01">
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="[Sass] Nested, &, @extend, !optional, %">[Sass] Nested, &, @extend, !optional, %</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        4 FEB 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    7 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>주석(Comments)</li>
+  <li>중첩 규칙(Nested Rules)</li>
+  <li>중첩 속성(Nested Properties)</li>
+  <li>부모, 참조 선택자 (&amp;)</li>
+  <li>RWD, 부모 참조 선택자(&amp;)와 미디어쿼리</li>
+  <li>선택자 상속(Selector Inheritance, @extend)</li>
+  <li>선택자 상속, 옵션(!optional)</li>
+  <li>대체 선택자(Placeholder Selector, %)</li>
+</ul>
+
+<!--more-->
+
+<hr />
+
+<h4 id="주석comments">주석(Comments)</h4>
+<p>CSS 멀티라인 주석 뿐만 아니라, JS 싱글라인 주석 역시 SASS에서 사용.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="cm">/*
+</span><span class="o">*</span> <span class="err">여러</span> <span class="err">줄</span> <span class="err">주석의</span> <span class="err">경우는</span>
+<span class="o">*</span> <span class="nt">CSS</span> <span class="err">컴파일</span> <span class="err">되어도</span> <span class="err">주석이</span> <span class="err">남음</span><span class="nc">.</span>
+ <span class="o">*/</span>
+
+<span class="c1">// 한줄주석의 경우는 CSS에서 지원하지 않기 때문에
+// CSS 컴파일시, 주석이 표시 되지 않음.
+</span></code></pre></div></div>
+
+<h4 id="중첩-규칙nested-rules">중첩 규칙(Nested Rules)</h4>
+<p>부모 선택자 내부에 자식 선택자를 포함하는 구조 형태로 작성이 가능.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nc">.page</span>
+	<span class="nc">.container</span>
+		<span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span>
+		<span class="nl">height</span><span class="p">:</span> <span class="m">20vh</span>
+			<span class="nc">.section</span>
+				<span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span>
+				<span class="nl">left</span><span class="p">:</span> <span class="m">100%</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.page</span> <span class="nc">.container</span> <span class="p">{</span>
+	<span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+	<span class="err">height;</span> <span class="err">20vh;</span>
+<span class="p">}</span>
+
+<span class="nc">.page</span> <span class="nc">.container</span> <span class="nc">.section</span> <span class="p">{</span>
+	<span class="nl">position</span><span class="p">:</span> <span class="nb">absolute</span><span class="p">;</span>
+	<span class="nl">left</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>SCSS 중첩 코드는 적당한게 좋다.</p>
+</blockquote>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// SCSS
+</span>	<span class="nt">div</span><span class="nc">.container</span> <span class="p">{</span>
+		<span class="nt">div</span><span class="nc">.contenr</span> <span class="p">{</span>
+			<span class="nt">div</span><span class="nc">.articles</span> <span class="p">{</span>
+				<span class="k">&amp;</span> <span class="o">&gt;</span> <span class="nt">div</span><span class="nc">.post</span> <span class="p">{</span>
+					<span class="nt">div</span><span class="nc">.title</span> <span class="p">{</span>
+						<span class="nt">h1</span> <span class="p">{</span>
+							<span class="nt">a</span> <span class="p">{</span>
+
+							<span class="p">}</span>
+						<span class="p">}</span>
+					<span class="p">}</span>
+					<span class="nt">div</span><span class="nc">.content</span> <span class="p">{</span>
+						<span class="nt">ul</span> <span class="p">{</span>
+							<span class="nt">li</span> <span class="p">{}</span>
+						<span class="p">}</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="중첩-속성nested-properties">중첩 속성(Nested Properties)</h4>
+<p>분화된 속성 여러 개를 설정할 경우, 네임스페이스(Namespace)를 사용하여 중첩 속성을 설정</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nc">.page</span>
+	<span class="nl">font</span><span class="p">:</span> <span class="m">1rem</span><span class="o">/</span><span class="m">1</span><span class="mi">.5</span> <span class="s2">"Spoqa Han Sans"</span><span class="o">,</span> <span class="nb">sans-serif</span>
+		<span class="na">weight</span><span class="p">:</span> <span class="m">600</span>
+		<span class="na">variant</span><span class="p">:</span> <span class="nb">small-caps</span>
+
+	<span class="nl">border</span><span class="p">:</span>
+		<span class="nl">top</span><span class="p">:</span>
+			<span class="nl">color</span><span class="p">:</span> <span class="no">red</span>
+			<span class="na">style</span><span class="p">:</span> <span class="nb">solid</span>
+			<span class="nl">width</span><span class="p">:</span> <span class="m">2px</span>
+		<span class="nl">bottom</span><span class="p">:</span>
+			<span class="nl">color</span><span class="p">:</span> <span class="nb">transparent</span>
+			<span class="na">style</span><span class="p">:</span> <span class="nb">solid</span>
+			<span class="nl">width</span><span class="p">:</span> <span class="m">2px</span>
+		<span class="nl">right</span><span class="p">:</span>
+			<span class="nl">color</span><span class="p">:</span> <span class="no">pink</span>
+			<span class="na">style</span><span class="p">:</span> <span class="nb">dashed</span>
+			<span class="nl">width</span><span class="p">:</span> <span class="m">2px</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.page</span> <span class="p">{</span>
+	<span class="nl">font</span><span class="p">:</span> <span class="m">1rem</span><span class="p">/</span><span class="m">1.5</span> <span class="s1">"Spoqa Han Sans"</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">;</span>
+	<span class="nl">font-weight</span><span class="p">:</span> <span class="m">600</span><span class="p">;</span>
+	<span class="nl">font-variant</span><span class="p">:</span> <span class="nb">small-caps</span><span class="p">;</span>
+	<span class="nl">border-top-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+	<span class="nl">border-top-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+	<span class="nl">border-top-width</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+	<span class="nl">border-bottom-color</span><span class="p">:</span> <span class="nb">transparent</span><span class="p">;</span>
+	<span class="nl">border-bottom-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+	<span class="nl">border-bottom-width</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+	<span class="nl">border-right-color</span><span class="p">:</span> <span class="no">pink</span><span class="p">;</span>
+	<span class="nl">border-right-style</span><span class="p">:</span> <span class="nb">dashed</span><span class="p">;</span>
+	<span class="nl">border-right-width</span><span class="p">:</span> <span class="m">2px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="부모-참조-선택자-">부모, 참조 선택자 (&amp;)</h3>
+<p>앤퍼센트(&amp;) 심볼은 부모를 참조하는 선택자 역할을 수행</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nc">.page</span>
+	<span class="nc">.page-header</span>
+		<span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span>
+		<span class="nl">height</span><span class="p">:</span> <span class="m">20vh</span>
+		<span class="nt">a</span>
+			<span class="nl">color</span><span class="p">:</span> <span class="mh">#3B40F3</span>
+			<span class="err">.</span><span class="na">chrome</span><span class="err"> &amp;</span><span class="p">:</span><span class="o">:</span><span class="n">hover</span>
+				<span class="nl">color</span><span class="p">:</span> <span class="mh">#6b141c</span>
+			<span class="k">&amp;</span><span class="nd">:focus</span><span class="o">,</span>
+			<span class="k">&amp;</span><span class="nd">:active</span><span class="o">,</span>
+				<span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span>
+			<span class="k">&amp;</span> <span class="nt">span</span>
+				<span class="nl">font-weight</span><span class="p">:</span> <span class="m">900</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.page</span> <span class="nc">.page-header</span> <span class="p">{</span>
+	<span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
+	<span class="nl">height</span><span class="p">:</span> <span class="m">20vh</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.page</span> <span class="nc">.page-header</span> <span class="nt">a</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="m">#3B40F3</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.chrome</span> <span class="nc">.page</span> <span class="nc">.page-header</span> <span class="nt">a</span><span class="nd">::hover</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="m">#6b141c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.page</span> <span class="nc">.page-header</span> <span class="nt">a</span><span class="nd">:focus</span><span class="o">,</span> <span class="nc">.page</span> <span class="nc">.page-header</span> <span class="nt">a</span><span class="nd">:active</span> <span class="p">{</span>
+	<span class="nl">outline</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.page</span> <span class="nc">.page-header</span> <span class="nt">a</span> <span class="nt">span</span> <span class="p">{</span>
+	<span class="nl">font-weight</span><span class="p">:</span> <span class="m">900</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="rwd-부모-참조-선택자와-미디어쿼리">RWD, 부모 참조 선택자(&amp;)와 미디어쿼리</h3>
+<p>선언 구간 내부의 미디어쿼리는 외부로 분리.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nt">aside</span><span class="nc">.page-sidebar</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">100%</span>
+	<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">600px</span><span class="p">)</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">45%</span>
+	<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="o">:</span> <span class="m">1100px</span><span class="p">)</span>
+		<span class="nl">width</span><span class="p">:</span> <span class="m">33</span><span class="mi">.3333%</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nt">aside</span><span class="nc">.page-sidebar</span> <span class="p">{</span>
+	<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">600px</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nt">aside</span><span class="nc">.page-sidebar</span> <span class="p">{</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">45%</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">1100px</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nt">aside</span><span class="nc">.page-sidebar</span> <span class="p">{</span>
+	<span class="nl">width</span><span class="p">:</span> <span class="m">33.3333%</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="선택자-상속selector-inheritance--extend">선택자 상속(Selector Inheritance) : @extend</h3>
+<p>@extend를 사용해 선언된 다른 규칙의 내용을 상속.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nv">$button-radius</span><span class="p">:</span> <span class="m">4px</span>
+<span class="nv">$button-align</span><span class="p">:</span> <span class="nb">center</span>
+<span class="nv">$button-gap</span><span class="p">:</span> <span class="m">0</span><span class="mi">.6em</span>
+<span class="nv">$button-bg</span><span class="p">:</span> <span class="mh">#485AFF</span>
+<span class="nv">$button-primary-color</span><span class="p">:</span> <span class="mh">#FFAE35</span>
+<span class="nv">$button-secondary-color</span><span class="p">:</span> <span class="mh">#9C198A</span>
+
+<span class="nc">.button</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="nv">$button-gap</span> <span class="m">1em</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="nv">$button-bg</span>
+	<span class="nl">text-align</span><span class="p">:</span> <span class="nv">$button-align</span>
+
+<span class="nc">.button-error</span>
+	<span class="k">@extend</span> <span class="nc">.button</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="mh">#f00</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">3px</span> <span class="nb">solid</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#f00</span><span class="o">,</span> <span class="m">42%</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.button</span><span class="o">,</span> <span class="nc">.button-error</span> <span class="p">{</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span>
+	<span class="n">padding</span><span class="p">:</span> <span class="m">0.6em</span> <span class="m">1em</span>
+	<span class="n">background</span><span class="p">:</span> <span class="m">#485AFF</span>
+	<span class="n">text-align</span><span class="p">:</span> <span class="nb">center</span>
+<span class="p">}</span>
+
+<span class="nc">.button-error</span> <span class="p">{</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#f00</span>
+	<span class="n">color</span><span class="p">:</span> <span class="m">#fff</span>
+	<span class="n">border</span><span class="p">:</span> <span class="m">3px</span> <span class="nb">solid</span> <span class="m">#290000</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="선택자-상속-옵션optional">선택자 상속, 옵션(!optional)</h3>
+<p>@extend 오류 발생시, 오류가 발생되지 않도록 옵션 설정.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nv">$button-radius</span><span class="p">:</span> <span class="m">4px</span>
+<span class="nv">$button-align</span><span class="p">:</span> <span class="nb">center</span>
+<span class="nv">$button-gap</span><span class="p">:</span> <span class="m">0</span><span class="mi">.6em</span>
+<span class="nv">$button-bg</span><span class="p">:</span> <span class="mh">#485AFF</span>
+<span class="nv">$button-primary-color</span><span class="p">:</span> <span class="mh">#FFAE35</span>
+<span class="nv">$button-secondary-color</span><span class="p">:</span> <span class="mh">#9C198A</span>
+
+<span class="nc">.button</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="nv">$button-gap</span> <span class="m">1em</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="nv">$button-bg</span>
+	<span class="nl">text-align</span><span class="p">:</span> <span class="nv">$button-align</span>
+
+<span class="nc">.button-error</span>
+	<span class="k">@extend</span> <span class="nc">.buttons</span> <span class="o">!</span><span class="nt">optional</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="mh">#f00</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="mh">#fff</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">3px</span> <span class="nb">solid</span> <span class="nf">darken</span><span class="p">(</span><span class="mh">#f00</span><span class="o">,</span> <span class="m">42%</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.button</span> <span class="p">{</span>
+	<span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+	<span class="nl">padding</span><span class="p">:</span> <span class="m">0.6em</span> <span class="m">1em</span><span class="p">;</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#485AFF</span><span class="p">;</span>
+	<span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.button-error</span> <span class="p">{</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#f00</span><span class="p">;</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="m">3px</span> <span class="nb">solid</span> <span class="m">#290000</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="대체-선택자placeholder-selector-">대체 선택자(Placeholder Selector, %)</h3>
+<p>SASS는 특수한 선택자 ‘%대체 선택자’를 지원. 해석된 CSS에서는 출력 되지 않음.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nv">%btn</span>
+	<span class="nv">$btn-bg</span><span class="p">:</span> <span class="mh">#E923CE</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="nv">$btn-bg</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="nb">none</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$btn-bg</span><span class="o">,</span> <span class="m">40%</span><span class="p">)</span>
+
+<span class="nc">.page-list</span>
+	<span class="nt">button</span>
+		<span class="k">@extend</span> <span class="nv">%btn</span>
+
+<span class="nt">footer</span> <span class="nt">button</span><span class="o">,</span>
+<span class="nt">footer</span> <span class="nt">a</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="nt">button</span><span class="o">],</span>
+<span class="nt">footer</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">"button"</span><span class="o">]</span>
+	<span class="k">@extend</span> <span class="nv">%btn</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="nc">.page-list</span> <span class="nt">button</span><span class="o">,</span> <span class="nt">footer</span> <span class="nt">button</span><span class="o">,</span> <span class="nt">footer</span> <span class="nt">a</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="nt">button</span><span class="o">],</span> <span class="nt">footer</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"button"</span><span class="o">]</span> <span class="p">{</span>
+	<span class="nl">background</span><span class="p">:</span> <span class="m">#E923CE</span><span class="p">;</span>
+	<span class="nl">border</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="m">#3a0633</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-02/learn-Sass01" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-02/learn-Sass01" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-02/learn-Sass01" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-02/learn-Sass01" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-02/learn-Sass01" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML(HyperText Markup Language) - 2</title>
+  <meta name="keywords" content="  HTML5 MARKUP  HTML 목록  HTML 폼          GET VS POST      ">
+  <meta name="description" content="  HTML5 MARKUP  HTML 목록  HTML 폼          GET VS POST      ">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-02/HTML02">
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="HTML(HyperText Markup Language) - 2">HTML(HyperText Markup Language) - 2</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        2 FEB 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>HTML5 MARKUP</li>
+  <li>HTML 목록</li>
+  <li>HTML 폼
+    <ul>
+      <li>GET VS POST
+<!--more--></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="html5-markup">HTML5 MARKUP</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;header&gt;&lt;h1&gt;</span>...<span class="nt">&lt;/h1&gt;&lt;/header&gt;</span>
+ <span class="nt">&lt;nav&gt;</span>
+     <span class="nt">&lt;header</span> <span class="na">id=</span><span class="s">"고유한_이름"</span> <span class="na">class=</span><span class="s">"다른_이름 또_다른_이름"</span><span class="nt">&gt;&lt;/header&gt;</span>
+ <span class="nt">&lt;/nav&gt;</span>
+ <span class="nt">&lt;article&gt;</span>
+     <span class="nt">&lt;h3&gt;</span>...<span class="nt">&lt;/h3&gt;</span>
+ <span class="nt">&lt;/article&gt;</span>
+ <span class="nt">&lt;main&gt;</span>
+     <span class="nt">&lt;header&gt;&lt;h3&gt;</span>...<span class="nt">&lt;/h3&gt;&lt;/header&gt;</span>
+ <span class="nt">&lt;/main&gt;</span>
+ <span class="nt">&lt;footer&gt;&lt;/footer&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>문서 내에서 <code class="highlighter-rouge">&lt;h1&gt;</code>요소는 한번만 사용하기를 권장</li>
+  <li><code class="highlighter-rouge">header</code>, <code class="highlighter-rouge">footer</code>요소는 여러곳(섹션 요소)에 들어갈 수 있기 때문에 식별자 부여</li>
+  <li>모든 섹션요소에는 보이든 안보이든 제목이 반드시 기입</li>
+  <li><code class="highlighter-rouge">main</code> 요소는 문서에서 한번만 써야 함</li>
+  <li>브라우저별 HTML5 지원 현황 알아보기
+    <ul>
+      <li><a href="https://html5test.com">HTML5 Test</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="html-목록">HTML 목록</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Ordered List --&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+
+<span class="c">&lt;!-- Unordered List --&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+<span class="c">&lt;!-- Definition List --&gt;</span>
+<span class="nt">&lt;dl&gt;</span>
+  <span class="nt">&lt;dt&gt;</span>...<span class="nt">&lt;/dt&gt;</span>
+  <span class="nt">&lt;dd&gt;</span>...<span class="nt">&lt;/dd&gt;</span>
+<span class="nt">&lt;/dl&gt;</span>
+
+</code></pre></div></div>
+<ul>
+  <li>Ordered List</li>
+  <li>Unordered List</li>
+  <li>Definition List</li>
+</ul>
+
+<hr />
+
+<h3 id="html-폼">HTML 폼</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/register.php"</span> <span class="na">method=</span><span class="s">"POST"</span> <span class="na">name=</span><span class="s">"register_form"</span> <span class="na">enctype=</span><span class="s">"multipart/form-data"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"user_id"</span><span class="nt">&gt;</span>ID<span class="nt">&lt;/label&gt;</span>: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"user_id"</span> <span class="na">name=</span><span class="s">"user_id"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"user_id"</span><span class="nt">&gt;</span>PASSWORD<span class="nt">&lt;/label&gt;</span>: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"user_password"</span> <span class="na">name=</span><span class="s">"user_password"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>전송<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>action: 데이터를 보낼 곳, 메서드: 보내는 방식</li>
+  <li>input: input 요소에 암묵적 레이블 연결, 일부 스크린리더는 읽지 못하므로 권장하지 않음.</li>
+  <li>input 요소에 명시적 레이블 연결: for 속성과 id 속성이 연결 된다.</li>
+  <li>id 속성은 접근성, name 속성은 서버에 값을 전송할 경우, 필요하므로 둘 다 기입한다.</li>
+</ul>
+
+<h4 id="get-vs-post">GET VS POST</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">조건</th>
+      <th style="text-align: center">GET</th>
+      <th style="text-align: center">POST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">보안</td>
+      <td style="text-align: center">POST에 비해 덜 보안적</td>
+      <td style="text-align: center">GET에 비해 보안적</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터 제한</td>
+      <td style="text-align: center">제한적, url 허용 길이만큼</td>
+      <td style="text-align: center">제한 없음</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">데이터 타입 제한</td>
+      <td style="text-align: center">오직 아스키 문자만 해당</td>
+      <td style="text-align: center">제한 없음, 바이너리 역시 사용가능</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">뒤로가기, 재전송</td>
+      <td style="text-align: center">사용자가 입력한 내용 다시 작성</td>
+      <td style="text-align: center">사용자에게 지워짐을 경고 함</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">인코딩</td>
+      <td style="text-align: center">application-x-www-form-urlencoded</td>
+      <td style="text-align: center">multipart/form-data, application-x-www-form-urlencoded</td>
+    </tr>
+  </tbody>
+</table>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-02/HTML02" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-02/HTML02" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-02/HTML02" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-02/HTML02" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-02/HTML02" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>

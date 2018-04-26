@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>[Sass] Operations, Interpolation, Mixins</title>
+  <meta name="keywords" content="  연산 (Operations)  보간법 (#{}, Interpolation)  Mixins">
+  <meta name="description" content="  연산 (Operations)  보간법 (#{}, Interpolation)  Mixins">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="http://localhost:4000/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+
+  <link rel="canonical" href="http://localhost:4000/articles/2017-02/learn-Sass03">
+  <link rel="alternate" type="application/rss+xml" title="Front-End Developer Skill Blog" href="http://localhost:4000/feed.xml" />
+
+  <!-- Icons -->
+  <!-- 16x16 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+  <!-- 32x32 -->
+  <link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+</head>
+
+
+<body>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="table cover">
+        
+
+<div class="cover-card table-cell table-middle">
+  
+  <a href="http://localhost:4000/">
+      <img src="http://localhost:4000/img/coding.jpg" alt="" class="avatar">
+  </a>
+  
+  <a href="http://localhost:4000/" class="author_name">Claire</a>
+  <span class="author_job">Front-End Developer</span>
+  <span class="author_bio mbm">KEEP CALM AND LOVE CODING</span>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="http://localhost:4000/">home</a>
+      </li>
+       
+      <li class="nav-item">
+        <a href="http://localhost:4000/archive/">Archive</a>
+      </li>
+          
+      <li class="nav-item">
+        <a href="http://localhost:4000/categories/">Categories</a>
+      </li>
+            
+      <li class="nav-item">
+        <a href="http://localhost:4000/tags/">Tags</a>
+      </li>
+       
+    </ul>
+  </nav>
+  <script type="text/javascript">
+  // based on http://stackoverflow.com/a/10300743/280842
+  function gen_mail_to_link(hs, subject) {
+    var lhs,rhs;
+    var p = hs.split('@');
+    lhs = p[0];
+    rhs = p[1];
+    document.write("<a class=\"social-link-item\" target=\"_blank\" href=\"mailto");
+    document.write(":" + lhs + "@");
+    document.write(rhs + "?subject=" + subject + "\"><i class=\"fa fa-fw fa-envelope\"></i><\/a>");
+  }
+</script>
+<div class="social-links">
+  <ul>
+    
+      <li>
+      <script>gen_mail_to_link('rockquai@gmail.com', 'Hello from website');</script>
+      </li>
+    
+    
+    <li><a href="http://facebook.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-facebook"></i></a></li>
+    
+    
+    
+    
+    
+    
+    <li><a href="http://github.com/rockquai" class="social-link-item" target="_blank"><i class="fa fa-fw fa-github"></i></a></li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+</div>
+
+</div>
+
+      </div>
+    </div>
+    <div class="col s12 m9">
+      <div class="post-listing">
+        <a class="btn" href= "http://localhost:4000/" >
+  Home
+</a>
+<a class="btn" href= "http://localhost:4000/categories" >
+  Categories
+</a>
+
+
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="[Sass] Operations, Interpolation, Mixins">[Sass] Operations, Interpolation, Mixins</h1>
+    <span class="post-meta">
+      <span class="post-date">
+        6 FEB 2017
+      </span>
+      •
+      <span class="read-time" title="Estimated read time">
+  
+  
+    4 mins read
+  
+</span>
+
+    </span>
+
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>연산 (Operations)</li>
+  <li>보간법 (#{}, Interpolation)</li>
+  <li>Mixins</li>
+</ul>
+
+<!--more-->
+
+<hr />
+<h3 id="연산operations">연산(Operations)</h3>
+<ul>
+  <li><code class="highlighter-rouge">덧셈(+)</code>, <code class="highlighter-rouge">뺄셈(-)</code>, <code class="highlighter-rouge">곱셈(*)</code>, <code class="highlighter-rouge">나눗셈(/)</code>, <code class="highlighter-rouge">나머지(%)</code>등 수학의 연산 결과를 수행할 수 있다</li>
+  <li>사칙연산의 원리를 따른다(<code class="highlighter-rouge">+,-,*,/, %[나머지 연산자]</code>)</li>
+  <li>폰트 속기형을 쓸 때 생각처럼 작동하지 않는다</li>
+  <li>인터폴레이션(Interpolation) 방식으로 해결한다 <code class="highlighter-rouge">#{}</code></li>
+  <li>컬러 연산이 가능하다(RRGGBB값중 매칭되는 값들을 연산한다)</li>
+  <li>문자 연산(String Operations) : 문자와 문자를 접합하려는 경우 + 연산자를 사용</li>
+  <li>불린 연산도 연산이 가능하다</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">10</span> <span class="o">&gt;=</span> <span class="mi">11</span> <span class="c1">// false</span>
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span> <span class="c1">// true</span>
+<span class="nx">red</span> <span class="o">==</span> <span class="err">#</span><span class="nx">f00</span> <span class="c1">// true</span>
+
+<span class="s1">'foo'</span> <span class="o">+</span> <span class="s1">'bar'</span> <span class="c1">// 'foobar'</span>
+<span class="s1">'foo '</span> <span class="o">+</span> <span class="s1">'bar'</span> <span class="c1">// 'foo bar'</span>
+
+<span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span> <span class="nx">or</span> <span class="mi">2</span> <span class="o">!=</span> <span class="nx">two</span> <span class="c1">// true</span>
+
+<span class="kc">true</span> <span class="nx">and</span> <span class="kc">false</span> <span class="c1">// false</span>
+
+<span class="nx">not</span> <span class="kc">false</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h3 id="보간법-interpolation">보간법(#{}, Interpolation)</h3>
+<ul>
+  <li>문자를 접합(용접과 비슷)</li>
+  <li>Sass는 변수를 “” 내부에서 처리 할 수 있는 보간법을 지원.</li>
+  <li>웹 폰트 CDN을 사용할 경우, 보간법이 유용하게 활용.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$spoq-language</span><span class="p">:</span> <span class="n">kr</span>
+
+<span class="k">@import</span> <span class="s">url("http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-#{$spoq-language}.css")</span>
+</code></pre></div></div>
+
+<ul>
+  <li>RWD, 쿼리문 보간법 활용 <code class="highlighter-rouge">#{...}</code></li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$selector</span><span class="p">:</span> <span class="n">selector-name</span>
+<span class="nv">$media-md</span><span class="p">:</span> <span class="s2">"screen and (min-width: 760px)"</span>
+<span class="nv">$media-lg</span><span class="p">:</span> <span class="s2">"screen and (min-width: 1220px)"</span>
+<span class="nv">$media-print</span><span class="p">:</span> <span class="s2">"not screen and (min-width: 21cm)"</span>
+
+<span class="nc">.</span><span class="si">#{</span><span class="nv">$selector</span><span class="si">}</span>
+	<span class="k">@media</span> <span class="si">#{</span><span class="nv">$media-print</span><span class="si">}</span>
+		<span class="nl">background</span><span class="p">:</span> <span class="mh">#fff</span> <span class="o">!</span><span class="n">important</span>
+		<span class="nl">color</span><span class="p">:</span> <span class="mh">#000</span> <span class="o">!</span><span class="n">important</span>
+</code></pre></div></div>
+<blockquote>
+  <p>!important은 프린트(인쇄) 환경에서는 꼭 배경은 흰색, 컬러는 검정으로 출력해야 잉크 낭비를 줄일 수 있다.</p>
+</blockquote>
+
+<h3 id="믹스인mixins">믹스인(Mixins)</h3>
+<ul>
+  <li>JS함수(function)와 흡사한 믹스인 모듈 <code class="highlighter-rouge">정의(@mixin, =)</code> 후, <code class="highlighter-rouge">호출(@include, +)</code>해서 사용. 재사용이 가능.</li>
+  <li><code class="highlighter-rouge">@mixin</code> 지시자(Directive)를 사용하여 정의한다. <code class="highlighter-rouge">*Sass 문법에서는 '='으로 대체할 수 있다</code></li>
+  <li><code class="highlighter-rouge">@include</code> 지시자를 사용하여 정의된 믹스인을 호출한다. <code class="highlighter-rouge">*Sass 문법에서는 '+'으로 대체할 수 있다</code></li>
+  <li>어떤 경우에 정적 믹스인 보다 플레이스홀더(%) 선택자가 좋은 선택인가? ex) <code class="highlighter-rouge">common.css</code></li>
+</ul>
+
+<blockquote>
+  <p>Sass는 전달인자(Arguments)로 통일해서 쓴다.
+JavaScript는 매개변수(Parameter), 전달인자(Arguments)로 구분해서 쓴다.
+	[- 매개변수(Parameter) : 값을 정의 할 경우 | - 전달인자(Arguments) : 값을 전달 할 경우]</p>
+</blockquote>
+
+<ul>
+  <li>scss
+    <ul>
+      <li>정의: @mixin</li>
+      <li>불러오기: @include</li>
+    </ul>
+  </li>
+  <li>sass
+    <ul>
+      <li>정의: =</li>
+      <li>불러오기: +</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="활용성이-떨어지는-정적-믹스인">활용성이 떨어지는 ‘정적 믹스인’</h3>
+<ul>
+  <li>정적인 믹스인은 매번 동일한 스타일만 설정이 가능하기 때문에 활용성이 떨어짐.</li>
+  <li>기본적으로 매개변수(Parameter)가 설정되어 있지 않은 믹스인을 정적 믹스인이라고 한다.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=</span><span class="err">믹스인이름</span> <span class="err">{}</span>
+<span class="o">+</span><span class="err">믹스인이름</span>
+</code></pre></div></div>
+
+<h3 id="활용성이-향상된-동적-믹스인">활용성이 향상된 ‘동적 믹스인’</h3>
+<ul>
+  <li>전달된 인자에 따라 스타일 변경이 가능하기 때문에 활용성이 향상.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=</span><span class="err">믹스인이름</span><span class="o">(</span><span class="err">매개변수</span><span class="nt">1</span><span class="o">,</span> <span class="err">매개변수</span><span class="nt">2</span><span class="o">)</span> <span class="err">{}</span>
+<span class="o">+</span><span class="err">믹스인이름</span><span class="o">(</span><span class="err">전달인자</span><span class="nt">1</span><span class="o">,</span> <span class="err">전달인자</span><span class="nt">2</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h3 id="전달-인자-arguments">전달 인자 (Arguments)</h3>
+<ul>
+  <li>JS 함수 확장처럼 mixin으로 정의된 모듈에 인자를 전달하여 믹스인을 확장 할 수 있다.</li>
+  <li>전달인자는 Sass의 변수와 유사하기에 변수 전달인자 앞에 ‘$’를 붙여야 하며, 각 인자는 콤마(‘,’)로 구분한다.</li>
+  <li>전달인자의 기본 값을 설정하는 구문이 있다면 해당 인자는 선택사항이다. ex) $arg: value</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=</span><span class="err">믹스인이름</span><span class="o">(</span><span class="err">매개변수</span><span class="nt">1</span><span class="o">,</span> <span class="err">매개변수</span><span class="nt">2</span><span class="o">,</span> <span class="err">매개변수</span><span class="nt">3</span><span class="o">,</span> <span class="err">매개변수</span><span class="nt">4</span><span class="o">)</span> <span class="err">{}</span>
+</code></pre></div></div>
+
+<h3 id="키워드-전달-인자args-keyword">키워드 전달 인자(Args, Keyword)</h3>
+<ul>
+  <li>Mixin 호출시 값을 전달하지 않아 오류가 발생하는 것을 방지하기 위해 특정 값을 기본으로 설정할 수 있다.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">=믹스인이름(매개변수</span><span class="na">1</span><span class="p">:</span><span class="err">기본값</span><span class="o">,</span> <span class="err">매개변수</span><span class="m">2</span><span class="o">:</span><span class="err">기본값</span><span class="p">)</span> <span class="err">{}</span>
+</code></pre></div></div>
+
+<h3 id="가변-전달-인자args-variable">가변 전달 인자(Args, Variable)</h3>
+<ul>
+  <li>전달할 인자의 개수가 고정된 경우, 응용하여 활용 불편.</li>
+  <li>전달 받을 인자 List(배열)를 ‘…‘로 처리하면 복수의 인자를 처리하기 쉽다.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">=</span><span class="err">믹스인이름</span><span class="o">(</span><span class="err">매개변수</span><span class="nc">...</span><span class="o">)</span> <span class="err">{}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>줄여서(‘…’) 전달하는 인자 표현식에는 ‘맵(Map) 데이터 유행’을 사용할 경우, ‘$를 제외한 키(Key)’를 전달하여 처리 가능하다 (반복문 없이)</li>
+</ul>
+
+<pre><code class="language-SCSS">@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
+}
+</code></pre>
+
+<h3 id="변수-범위scope-콘텐트-블록">변수 범위(scope) 콘텐트 블록</h3>
+<ul>
+  <li>믹스인 내부에 <code class="highlighter-rouge">@content</code>를 사용하면 믹스인 호출 과정에서 믹스인 내부에서 처리될 콘텐츠(코드 블록)를 전달하여 코드를 섞을 수 있다.</li>
+</ul>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Sass
+</span><span class="nf">=apply-to-ie6-only</span>
+  <span class="o">*</span> <span class="nt">html</span>
+    <span class="k">@content</span>
+
+<span class="nd">+apply-to-ie6-only</span>
+  <span class="nn">#logo</span>
+    <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(/logo.gif)</span>
+</code></pre></div></div>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">/* CSS */</span>
+<span class="o">*</span> <span class="nt">html</span> <span class="nf">#logo</span> <span class="p">{</span>
+  <span class="nl">background-image</span><span class="p">:</span> <span class="sx">url(/logo.gif)</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<blockquote>
+  <ul>
+    <li>html : <code class="highlighter-rouge">*</code> IE6,7 hack.</li>
+  </ul>
+</blockquote>
+
+<h3 id="믹스인mixins-vs-플레이스홀더-placeholder">믹스인(Mixins) VS 플레이스홀더 %(placeholder)</h3>
+<ul>
+  <li>믹스인(Mixins)
+    <ul>
+      <li>선택자마다 동일한 코드가 생성이 되어 코드량이 많아진다.</li>
+      <li>인자를 전달함으로써 확장성이 좋다.</li>
+      <li>외부에서 전달받은 인자 또는 콘텐츠를 병합해서 코드 덩어리를 출력이 된다.</li>
+    </ul>
+  </li>
+  <li>플레이스홀더 %(placeholder)
+    <ul>
+      <li>선택자가 올라가 그룹핑이 된다.</li>
+      <li>확장하기 힘들다.</li>
+    </ul>
+  </li>
+</ul>
+
+  </article>
+</div>
+
+<div class="share-buttons">
+  <h6>Share on: </h6>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2017-02/learn-Sass03" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php=http://localhost:4000/articles/2017-02/learn-Sass03" class="facebook btn" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2017-02/learn-Sass03" class="google-plus btn" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+    <li>
+      <a href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/articles/2017-02/learn-Sass03" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
+    </li>
+    <li>
+      <a href="https://www.reddit.com/submit?url=http://localhost:4000/articles/2017-02/learn-Sass03" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
+    </li>
+  </ul>
+</div><!-- end share-buttons -->
+
+
+
+        <footer>
+  &copy; 2018 Claire. Powered by <a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://github.com/renyuanz/leonids/">leonids theme</a> made with <i class="fa fa-heart heart-icon"></i>
+</footer>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="http://localhost:4000/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:4000/js/main.js"></script>
+
+
+</body>
+</html>
